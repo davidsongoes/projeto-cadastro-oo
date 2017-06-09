@@ -50,8 +50,8 @@ include(__DIR__ . '/../layout/header.php');
                     <tr class="alinhamento">
                         <td><?php echo $efetivo->saram; ?></td>
                         <td><?php echo $efetivo->posto_graduacao; ?></td>
-                        <td><?php echo $efetivo->nome_completo; ?></td>
-                        <td><?php echo $efetivo->nome_guerra; ?></td>
+                        <td><?php echo utf8_encode($efetivo->nome_completo); ?></td>
+                        <td><?php echo utf8_encode($efetivo->nome_guerra); ?></td>
                         <td><?php echo $efetivo->situacao; ?></td>
                         <td><?php echo $efetivo->especialidade; ?></td>
                         <td><?php echo $efetivo->quadro; ?></td>
