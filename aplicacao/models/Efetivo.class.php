@@ -158,6 +158,7 @@ class Efetivo extends EfetivoDAO
             $efetivo->situacao = Efetivo::retornaSituacao($result['situacao']);
             $efetivo->secao = Efetivo::buscaSecao($result['id_secao']);
             $efetivo->ramal = ($result['ramal']);
+            $efetivo->rtcaer = $result['rtcaer'];
             $efetivo->data_nascimento = $result['data_nasc'];
             $efetivo->data_ultima_promocao = $result['data_ult_prom'];
             $efetivo->email = $result['email'];
