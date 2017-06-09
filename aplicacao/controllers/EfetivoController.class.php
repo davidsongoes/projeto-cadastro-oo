@@ -82,12 +82,11 @@ class EfetivoController{
         });
     }
     public function editarMilitar(){
-        $chamado = Chamado::buscarChamadoPorId($_GET['id']);
-
+        $efetivo = Efetivo::buscarPorId($_GET['id']);
         if($_SESSION['grupo'] == 3){
-            View::make('chamado/adicionaSolucionador', array('chamado' => $chamado));
+            View::make('efetivo/editarMilitar', array('efetivo' => $efetivo));
         }else{
-            View::make('chamado/resolveChamado', array('chamado' => $chamado));
+            View::make('efetivo/editarMilitar', array('efetivo' => $efetivo));
         }
 
     }
