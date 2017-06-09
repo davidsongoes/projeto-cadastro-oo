@@ -19,8 +19,12 @@ class EfetivoDAO extends AbstractModel
                                   INNER JOIN secao AS s ON m.id_secao = s.id_secao 
                                   INNER JOIN posto_grad AS p ON m.id_post_grad = p.id_posto_grad
                                   INNER JOIN especialidade AS e ON m.id_esp = e.id_esp order by id_post_grad, situacao, data_ult_prom, antiguidade_turma DESC ";
-    const QUERY_ALL_POSTO_GRADUACAO = "select * from posto_grad where id_posto_grad=:id_posto_grad";
-    const QUERY_ALL_QUADRO = "select * from quadro where id_quadro=:id_quadro";
-    const QUERY_ALL_ESPECIALIDADE = "select * from especialidade where id_esp=:id_esp";
-    const QUERY_ALL_SECAO = "select * from secao where id_secao=:id_secao";
+    const QUERY_BUSCA_POSTO_GRADUACAO = "select * from posto_grad where id_posto_grad=:id_posto_grad";
+    const QUERY_BUSCA_QUADRO = "select * from quadro where id_quadro=:id_quadro";
+    const QUERY_BUSCA_ESPECIALIDADE = "select * from especialidade where id_esp=:id_esp";
+    const QUERY_BUSCA_SECAO = "select * from secao where id_secao=:id_secao";
+    const QUERY_ALL_POSTO_GRADUACAO = "select * from posto_grad";
+    const QUERY_ALL_QUADRO = "select * from quadro";
+    const QUERY_ALL_ESPECIALIDADE = "select * from especialidade order by esp";
+    const QUERY_ALL_SECAO = "select * from secao";
 }
