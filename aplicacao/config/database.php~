@@ -1,0 +1,11 @@
+<?php
+
+
+return array(
+		'mysql' => array(
+		'host' => 'localhost',
+		'dbname' => 'blog',
+		'user' =>'blog',
+		'pass' => 'blog@secret',
+	),
+);

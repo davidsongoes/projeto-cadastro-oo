@@ -1,0 +1,44 @@
+.glyphicon-remove{
+    color: red;
+}
+.glyphicon-edit{
+    color: green;
+}
+
+.login{
+    padding-left: 30%;
+    padding-right: 30%;
+    padding-top: 14%;
+    text-align: center;
+}
+.principal{
+    padding-top: 6%;
+}
+body{
+    padding-top: 70px;
+}
+
+.panel-heading{
+    background-image: linear-gradient(to bottom, #337ab7 0px, #2e6da4 100%);
+    background-repeat: repeat-x;
+}
+footer{
+    text-align: center;
+}
+footer img{
+    width: 30px;
+    height: 30px;
+}
+.construcao{
+    position: relative;
+    padding-left: 40%;
+}
+.alert{
+    text-align: center;
+}
+.input_menor{
+    width: 40%;
+}
+.alinhamento{
+    text-align: center;
+ }
