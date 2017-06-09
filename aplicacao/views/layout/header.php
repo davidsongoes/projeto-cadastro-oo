@@ -8,9 +8,11 @@
 
     <link rel="stylesheet" href="dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="dist/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="dist/css/image_upload.css">
     <link rel="stylesheet" href="dist/css/main.css">
     <script src="dist/js/jquery-latest.min.js" type="text/javascript"></script>
     <script src="dist/js/script.js"></script>
+    <script src="dist/js/image_upload.js"></script>
     <script src="dist/js/bootstrap.min.js"></script>
 
     <link rel="stylesheet" href="dist/css/jquery-ui.css">
