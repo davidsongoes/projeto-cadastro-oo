@@ -82,26 +82,49 @@ class Efetivo extends EfetivoDAO
 //MÉTODOS DE BUSCA
     public static function buscaPostoGraduacao($id)
     {
-        $result = AbstractModel::query(self::QUERY_ALL_POSTO_GRADUACAO, array(':id_posto_grad' => $id));
+        $result = AbstractModel::query(self::QUERY_BUSCA_POSTO_GRADUACAO, array(':id_posto_grad' => $id));
         return $result['posto_grad'];
     }
 
     public static function buscaQuadro($id)
     {
-        $result = AbstractModel::query(self::QUERY_ALL_QUADRO, array(':id_quadro' => $id));
+        $result = AbstractModel::query(self::QUERY_BUSCA_QUADRO, array(':id_quadro' => $id));
         return $result['quadro'];
     }
 
     public static function buscaEspecialidade($id)
     {
-        $result = AbstractModel::query(self::QUERY_ALL_ESPECIALIDADE, array(':id_esp' => $id));
+        $result = AbstractModel::query(self::QUERY_BUSCA_ESPECIALIDADE, array(':id_esp' => $id));
         return $result['esp'];
     }
 
     public static function buscaSecao($id)
     {
-        $result = AbstractModel::query(self::QUERY_ALL_SECAO, array(':id_secao' => $id));
+        $result = AbstractModel::query(self::QUERY_BUSCA_SECAO, array(':id_secao' => $id));
         return $result['secao'];
+    }
+
+    static public function allPostoGraduacao()
+    {
+        $resultado = AbstractModel::queryAll(self::QUERY_ALL_POSTO_GRADUACAO, null);
+        return $resultado;
+    }
+
+    static public function allEspecialidade()
+    {
+        $resultado = AbstractModel::queryAll(self::QUERY_ALL_ESPECIALIDADE, null);
+        return $resultado;
+    }
+    static public function allQuadro()
+    {
+        $resultado = AbstractModel::queryAll(self::QUERY_ALL_QUADRO, null);
+        return $resultado;
+    }
+
+    static public function allSecao()
+    {
+        $resultado = AbstractModel::queryAll(self::QUERY_ALL_SECAO, null);
+        return $resultado;
     }
 
     public static function retornaSituacao($id)
