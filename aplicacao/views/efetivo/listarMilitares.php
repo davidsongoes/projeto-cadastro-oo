@@ -10,10 +10,11 @@ use components\Helper;
 include(__DIR__ . '/../layout/header.php');
 ?>
     <div class="row">
-        <div class="col-lg-3">
+        <div class="col-lg-2">
             <?php include(__DIR__ . '/../layout/menu.php'); ?>
         </div>
-        <div class="col-lg-9">
+        <div class="container-fluid margem_direita">
+        <div class="col-lg-10">
             <!--        Breadcrumbs-->
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="index.php">Home</a></li>
@@ -75,7 +76,7 @@ include(__DIR__ . '/../layout/header.php');
                                     <li>
                                         <a href="index.php?c=efetivo&acao=detalhesMilitar&id=<?php echo $efetivo->id; ?>">Detalhes</a>
                                     </li>
-                                    <li><a href="index.php?c=efetivo&acao=editarMilitar&id=<?php echo $efetivo->id; ?>">Editar</a>
+                                    <li><a href="index.php?c=efetivo&acao=viewEditarMilitar&id=<?php echo $efetivo->id; ?>">Editar</a>
                                     </li>
                                     <li>
                                         <a href="index.php?c=efetivo&acao=excluirMilitar&id=<?php echo $efetivo->id; ?>">Excluir</a>
@@ -88,6 +89,7 @@ include(__DIR__ . '/../layout/header.php');
             </table>
 
 
+        </div>
         </div>
     </div>
 <?php include(__DIR__ . '/../layout/footer.php'); ?>
