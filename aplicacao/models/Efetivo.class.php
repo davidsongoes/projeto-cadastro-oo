@@ -7,6 +7,7 @@
  */
 namespace models;
 
+use components\Helper;
 use components\View;
 use models\base\AbstractModel;
 
@@ -40,22 +41,24 @@ class Efetivo extends EfetivoDAO
         }
     }
 
-    public function editarMilitar($dados)
+    public static function editarMilitar($dados)
     {
+        echo '<pre>';
+        var_dump($dados);exit;
         AbstractModel::verificaDados($dados);
         try {
             AbstractModel::executar(self::QUERY_UPDATE, array(
-                ':id_post_grad' => $dados['posto_grad'],
-                ':id_esp' => $dados['especialidade'],
-                ':id_quadro' => $dados['quadro'],
-                ':id_secao' => $dados['secao'],
                 ':saram' => $dados['saram'],
+                ':id_post_grad' => AbstractModel::parseNameId('posto_grad', 'posto_grad', $dados['posto_graduacao'], 'id_posto_grad'),
+                ':id_quadro' => AbstractModel::parseNameId('quadro', 'quadro', $dados['quadro'], 'id_quadro'),
+                ':id_esp' => AbstractModel::parseNameId('esp', 'esp', $dados['especialidade'], 'id_esp'),
                 ':nome_completo' => $dados['nome_completo'],
                 ':nome_guerra' => $dados['nome_guerra'],
-                ':situacao' => $dados['situacao'],
-                ':ramal' => $dados['ramal'],
                 ':data_nasc' => AbstractModel::formataData($dados['data_nascimento']),
                 ':data_ult_prom' => AbstractModel::formataData($dados['data_ult_promocao']),
+                ':id_secao' => AbstractModel::parseNameId('secao', 'secao', $dados['secao'], 'id_secao'),
+                ':ramal' => $dados['ramal'],
+                ':situacao' => $dados['situacao'],
                 ':email' => $dados['email'],
                 ':antiguidade_turma' => $dados['antiguidade_turma'],
                 ':id_militar' => $dados['id_militar'],
@@ -126,20 +129,20 @@ class Efetivo extends EfetivoDAO
         $resultado = AbstractModel::queryAll(self::QUERY_ALL_SECAO, null);
         return $resultado;
     }
-
-    public static function retornaSituacao($id)
-    {
-        if (isset($id) == "1") {
-            $situacao = "Ativa";
-        }
-        if ($id == "2") {
-            $situacao = "R1";
-        }
-        if ($id == "3") {
-            $situacao = "REFM";
-        }
-        return $situacao;
-    }
+//
+//    public static function retornaSituacao($id)
+//    {
+//        if (isset($id) == "1") {
+//            $situacao = "Ativa";
+//        }
+//        if ($id == "2") {
+//            $situacao = "R1";
+//        }
+//        if ($id == "3") {
+//            $situacao = "REFM";
+//        }
+//        return $situacao;
+//    }
 
     static public function buscarMilitares()
     {
@@ -154,7 +157,7 @@ class Efetivo extends EfetivoDAO
             $efetivo->posto_graduacao = Efetivo::buscaPostoGraduacao($result['id_post_grad']);
             $efetivo->especialidade = Efetivo::buscaEspecialidade($result['id_esp']);
             $efetivo->quadro = Efetivo::buscaQuadro($result['id_quadro']);
-            $efetivo->situacao = Efetivo::retornaSituacao($result['situacao']);
+            $efetivo->situacao = Helper::$situacao[$result['situacao']];
             $efetivo->secao = Efetivo::buscaSecao($result['id_secao']);
             $efetivo->ramal = ($result['ramal']);
             $efetivo->data_nascimento = $result['data_nasc'];
@@ -178,7 +181,7 @@ class Efetivo extends EfetivoDAO
             $efetivo->posto_graduacao = Efetivo::buscaPostoGraduacao($result['id_post_grad']);
             $efetivo->especialidade = Efetivo::buscaEspecialidade($result['id_esp']);
             $efetivo->quadro = Efetivo::buscaQuadro($result['id_quadro']);
-            $efetivo->situacao = Efetivo::retornaSituacao($result['situacao']);
+            $efetivo->situacao = $result['situacao'];
             $efetivo->secao = Efetivo::buscaSecao($result['id_secao']);
             $efetivo->ramal = ($result['ramal']);
             $efetivo->rtcaer = $result['rtcaer'];
