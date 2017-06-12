@@ -112,8 +112,10 @@ function executarEfetivoController($acao){
         $controller->listarMilitares();
     }elseif($acao == 'excluirMilitar'){
         $controller->excluirMilitar();
+    }elseif($acao == 'viewEditarMilitar'){
+        $controller->viewEditarMilitar();
     }elseif($acao == 'editarMilitar'){
-        $controller->editarMilitar();
+        $controller->EditarMilitar();
     }elseif($acao == 'detalhesMilitar'){
         $controller->detalhesMilitar();
     }
