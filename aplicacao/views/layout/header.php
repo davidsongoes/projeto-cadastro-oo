@@ -47,7 +47,7 @@
 <?php endif;?>
 
 <body>
-<div class="container">
+<div class="">
 
 
 
