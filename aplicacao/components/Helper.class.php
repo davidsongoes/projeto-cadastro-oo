@@ -7,6 +7,11 @@
  */
 namespace components;
  class Helper{
+     static public $situacao = [
+         '1' => "Ativa",
+         '2' => "R1",
+         '3' => "REFM",
+     ];
     static public $secoes = [
         '1' => 'DG',
         '2' => 'VICENS',
@@ -44,6 +49,7 @@ namespace components;
         '14' => 'CB',
         '15' => 'SD'
     ];
+
     static public $tipos = [
         '1' => 'WEB',
         '2' => 'REDE',
