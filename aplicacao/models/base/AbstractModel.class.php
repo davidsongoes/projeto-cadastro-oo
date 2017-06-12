@@ -54,4 +54,12 @@ abstract class AbstractModel
         $stmt->execute($dados);
         return $stmt->fetch();
     }
+    static public function parseNameId($tabela, $coluna, $dado, $id){
+        $query = "select $id from $tabela where $coluna = :$coluna";
+        $stmt = PDOUtil::getInstance()->obterConexao()->prepare($query);
+        $stmt->execute(array(
+           $coluna => $dado
+        ));
+        return $stmt->fetch(\PDO::FETCH_ASSOC);
+    }
 }
