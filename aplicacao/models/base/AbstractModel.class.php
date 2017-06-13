@@ -24,7 +24,6 @@ abstract class AbstractModel
     public static function camposNulos()
     {
         $campoNulos = [
-            'saram',
             'rtcaer'
         ];
         return $campoNulos;
