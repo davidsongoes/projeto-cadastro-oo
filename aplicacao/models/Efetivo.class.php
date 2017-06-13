@@ -129,20 +129,6 @@ class Efetivo extends EfetivoDAO
         $resultado = AbstractModel::queryAll(self::QUERY_ALL_SECAO, null);
         return $resultado;
     }
-//
-//    public static function retornaSituacao($id)
-//    {
-//        if (isset($id) == "1") {
-//            $situacao = "Ativa";
-//        }
-//        if ($id == "2") {
-//            $situacao = "R1";
-//        }
-//        if ($id == "3") {
-//            $situacao = "REFM";
-//        }
-//        return $situacao;
-//    }
 
     static public function buscarMilitares()
     {
@@ -192,11 +178,4 @@ class Efetivo extends EfetivoDAO
         }
         return isset($efetivo) ? $efetivo : NULL;
     }
-
-    public static function camposNulos(){
-        array(
-            'rtcaer' => ''
-        );
-    }
-
 }
