@@ -43,25 +43,25 @@ class Efetivo extends EfetivoDAO
 
     public static function editarMilitar($dados)
     {
-        echo '<pre>';
-        var_dump($dados);exit;
         AbstractModel::verificaDados($dados);
+//
         try {
             AbstractModel::executar(self::QUERY_UPDATE, array(
                 ':saram' => $dados['saram'],
                 ':id_post_grad' => AbstractModel::parseNameId('posto_grad', 'posto_grad', $dados['posto_graduacao'], 'id_posto_grad'),
                 ':id_quadro' => AbstractModel::parseNameId('quadro', 'quadro', $dados['quadro'], 'id_quadro'),
-                ':id_esp' => AbstractModel::parseNameId('esp', 'esp', $dados['especialidade'], 'id_esp'),
-                ':nome_completo' => $dados['nome_completo'],
-                ':nome_guerra' => $dados['nome_guerra'],
+                ':id_esp' => AbstractModel::parseNameId('especialidade', 'esp', $dados['especialidade'], 'id_esp'),
+                ':nome_completo' => utf8_decode($dados['nome_completo']),
+                ':nome_guerra' => utf8_decode($dados['nome_guerra']),
                 ':data_nasc' => AbstractModel::formataData($dados['data_nascimento']),
-                ':data_ult_prom' => AbstractModel::formataData($dados['data_ult_promocao']),
+                ':data_ult_prom' => AbstractModel::formataData($dados['data_ultima_promocao']),
                 ':id_secao' => AbstractModel::parseNameId('secao', 'secao', $dados['secao'], 'id_secao'),
                 ':ramal' => $dados['ramal'],
+                ':rtcaer' => $dados['rtcaer'],
                 ':situacao' => $dados['situacao'],
                 ':email' => $dados['email'],
                 ':antiguidade_turma' => $dados['antiguidade_turma'],
-                ':id_militar' => $dados['id_militar'],
+                ':id_militar' => $dados['id'],
             ));
             return true;
         } catch (\PDOException  $e) {
@@ -191,6 +191,12 @@ class Efetivo extends EfetivoDAO
             $efetivo->antiguidade_turma = $result['antiguidade_turma'];
         }
         return isset($efetivo) ? $efetivo : NULL;
+    }
+
+    public static function camposNulos(){
+        array(
+            'rtcaer' => ''
+        );
     }
 
 }
