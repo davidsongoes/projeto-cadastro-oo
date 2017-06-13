@@ -21,7 +21,7 @@ class Efetivo extends EfetivoDAO
         AbstractModel::verificaDados($dados);
         try {
             AbstractModel::executar(self::QUERY_INSERT, array(
-                ':id_post_grad' => $dados['posto_grad'],
+                ':id_posto_grad' => $dados['posto_grad'],
                 ':id_esp' => $dados['especialidade'],
                 ':id_quadro' => $dados['quadro'],
                 ':id_secao' => $dados['secao'],
@@ -48,7 +48,7 @@ class Efetivo extends EfetivoDAO
         try {
             AbstractModel::executar(self::QUERY_UPDATE, array(
                 ':saram' => $dados['saram'],
-                ':id_post_grad' => AbstractModel::parseNameId('posto_grad', 'posto_grad', $dados['posto_graduacao'], 'id_posto_grad'),
+                ':id_posto_grad' => AbstractModel::parseNameId('posto_grad', 'posto_grad', $dados['posto_graduacao'], 'id_posto_grad'),
                 ':id_quadro' => AbstractModel::parseNameId('quadro', 'quadro', $dados['quadro'], 'id_quadro'),
                 ':id_esp' => AbstractModel::parseNameId('especialidade', 'esp', $dados['especialidade'], 'id_esp'),
                 ':nome_completo' => utf8_decode($dados['nome_completo']),
@@ -80,6 +80,11 @@ class Efetivo extends EfetivoDAO
         } catch (\PDOException  $e) {
             echo 'Error: ' . $e->getMessage();
         }
+    }
+
+    public function remover()
+    {
+        AbstractModel::executar(self::QUERY_DELETE, array(':id_militar' => $this->id));
     }
 
 //MÉTODOS DE BUSCA
@@ -140,7 +145,7 @@ class Efetivo extends EfetivoDAO
             $efetivo->saram = $result['saram'];
             $efetivo->nome_completo = $result['nome_completo'];
             $efetivo->nome_guerra = $result['nome_guerra'];
-            $efetivo->posto_graduacao = Efetivo::buscaPostoGraduacao($result['id_post_grad']);
+            $efetivo->posto_graduacao = Efetivo::buscaPostoGraduacao($result['id_posto_grad']);
             $efetivo->especialidade = Efetivo::buscaEspecialidade($result['id_esp']);
             $efetivo->quadro = Efetivo::buscaQuadro($result['id_quadro']);
             $efetivo->situacao = Helper::$situacao[$result['situacao']];
@@ -164,7 +169,7 @@ class Efetivo extends EfetivoDAO
             $efetivo->saram = $result['saram'];
             $efetivo->nome_completo = $result['nome_completo'];
             $efetivo->nome_guerra = $result['nome_guerra'];
-            $efetivo->posto_graduacao = Efetivo::buscaPostoGraduacao($result['id_post_grad']);
+            $efetivo->posto_graduacao = Efetivo::buscaPostoGraduacao($result['id_posto_grad']);
             $efetivo->especialidade = Efetivo::buscaEspecialidade($result['id_esp']);
             $efetivo->quadro = Efetivo::buscaQuadro($result['id_quadro']);
             $efetivo->situacao = $result['situacao'];
