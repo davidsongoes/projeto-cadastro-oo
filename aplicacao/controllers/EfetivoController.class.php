@@ -64,27 +64,36 @@ class EfetivoController
     public function excluirMilitar()
     {
         PDOUtil::transacional(function () {
-            $dados = $_POST;
-            if ($dados['trataChamado'] == 'fechaChamado') {
-                Chamado::fechaChamado($dados);
-                Historico::novo($dados);
-                $_SESSION['success'] = "Chamado Fechado com Sucesso!";
-                View::make('home/index');
-            }
-            if ($dados['trataChamado'] == 'atualizaChamado') {
-                Chamado::atualizaChamado($dados);
-                Historico::novo($dados);
-                $_SESSION['success'] = "Chamado Atualizado com Sucesso!";
-                View::make('home/index');
-            }
-            if ($dados['trataChamado'] == 'adicionaSolucionador') {
-                Chamado::adicionaSolucionador($dados);
-                Historico::novo($dados);
-                $_SESSION['success'] = "Foi adicionado um solucionador ao chamado";
-                View::make('home/index');
-            }
+            $efetivo = Efetivo::buscarPorId($_GET['id']);
+            $efetivo->remover();
         });
+        View::make('efetivo/listarMilitares', array('efetivos' => Efetivo::buscarMilitares()));
     }
+
+//    public function excluirMilitar()
+//    {
+//        PDOUtil::transacional(function () {
+//            $dados = $_POST;
+//            if ($dados['trataChamado'] == 'fechaChamado') {
+//                Chamado::fechaChamado($dados);
+//                Historico::novo($dados);
+//                $_SESSION['success'] = "Chamado Fechado com Sucesso!";
+//                View::make('home/index');
+//            }
+//            if ($dados['trataChamado'] == 'atualizaChamado') {
+//                Chamado::atualizaChamado($dados);
+//                Historico::novo($dados);
+//                $_SESSION['success'] = "Chamado Atualizado com Sucesso!";
+//                View::make('home/index');
+//            }
+//            if ($dados['trataChamado'] == 'adicionaSolucionador') {
+//                Chamado::adicionaSolucionador($dados);
+//                Historico::novo($dados);
+//                $_SESSION['success'] = "Foi adicionado um solucionador ao chamado";
+//                View::make('home/index');
+//            }
+//        });
+//    }
 
     public function viewEditarMilitar()
     {
