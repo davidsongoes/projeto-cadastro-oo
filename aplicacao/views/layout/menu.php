@@ -15,7 +15,7 @@ $contaChamado = Chamado::contaChamadosSemSolucionador();
             <div class="panel-heading">Efetivo</div>
             <div class="panel-body">
                 <ul class="nav nav-pills nav-stacked">
-                    <li><a href='index.php?c=efetivo&acao=index'><span>Adicionar Novo Militar</span></a></li>
+                    <li><a href='index.php?c=efetivo&acao=viewNovoMilitar'><span>Adicionar Novo Militar</span></a></li>
                     <li><a href='index.php?c=efetivo&acao=listarMilitares'><span>Listar Militares</span></a></li>
                 </ul>
             </div>
