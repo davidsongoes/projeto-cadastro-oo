@@ -19,19 +19,19 @@ use models\Historico;
 class EfetivoController
 {
 
+    public function viewNovoMilitar()
+    {
+        View::make('efetivo/novoMilitar');
+    }
+
     public function novoMilitar()
     {
-        PDOUtil::transacional(function () {
-            $dados = $_POST;
-            if ($_SESSION['grupo'] == 2) {
-                Efetivo::novoMilitar($dados);
-            } else {
-                Chamado::novoComoAdminsitrador($dados);
-            }
-
-        });
-        $_SESSION['success'] = "Chamado aberto com sucesso!";
-        View::make('home/index');
+        $dados = $_POST;
+        if (Efetivo::adicionaMilitar($dados)) {
+            $efetivos = Efetivo::buscarMilitares();
+            $_SESSION['success'] = "<strong style='color: #0f0f0f'>Militar inserido com sucesso!</strong>";
+            View::make('efetivo/listarMilitares', array('efetivos' => $efetivos));
+        }
     }
 
     public function detalhesMilitar()
@@ -67,6 +67,7 @@ class EfetivoController
             $efetivo = Efetivo::buscarPorId($_GET['id']);
             $efetivo->remover();
         });
+        $_SESSION['danger'] = "<strong style='color: #0f0f0f'>Militar desativado com successo!</strong>";
         View::make('efetivo/listarMilitares', array('efetivos' => Efetivo::buscarMilitares()));
     }
 
@@ -111,8 +112,9 @@ class EfetivoController
         {
             $dados = $_POST;
             if (Efetivo::editarMilitar($dados)) {
-                $_SESSION['success'] = "Usuario alterado com sucesso!";
-                View::make('home/index');
+                $efetivos = Efetivo::buscarMilitares();
+                $_SESSION['warning'] = "<strong style='color: #0f0f0f'>Militar editado com sucesso!</strong>";
+                View::make('efetivo/listarMilitares', array('efetivos' => $efetivos));
             }
         }
     }
