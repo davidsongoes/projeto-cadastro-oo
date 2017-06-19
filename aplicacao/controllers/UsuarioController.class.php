@@ -31,7 +31,7 @@ Class UsuarioController
     {
         $dados = $_POST;
         if (Usuario::adicionaUsuario($dados)) {
-            $_SESSION['success'] = "Usuario criado com sucesso!";
+            $_SESSION['success'] = "<strong style='color: #0f0f0f'>Usuario criado com sucesso!</strong>";
             View::make('home/index');
         }
     }
@@ -58,8 +58,9 @@ Class UsuarioController
     {
         $dados = $_POST;
         if (Usuario::editaUsuario($dados)) {
-            $_SESSION['success'] = "Usuario alterado com sucesso!";
-            View::make('home/index');
+            $_SESSION['warning'] ="<strong style='color: #0f0f0f'>Usuario alterado com sucesso!</strong>";
+            $usuarios = Usuario::buscarTodos();
+            View::make('usuario/exibir', array('usuarios' => $usuarios));
         }
     }
 
@@ -82,7 +83,7 @@ Class UsuarioController
             $_SESSION['login'] = $usuario->login;
             View::make('home/index');
         } else {
-            $_SESSION['danger'] = "Usuario ou senha inválido";
+            $_SESSION['danger'] = "<strong style='color: #0f0f0f'>Usuario ou senha inválido</strong>";
             View::make('home/index');
             die();
         }
@@ -92,10 +93,10 @@ Class UsuarioController
     {
         $dados = $_POST;
         if (Usuario::resetaSenha($dados)) {
-            $_SESSION['success'] = "Senha enviada por email!!!";
+            $_SESSION['success'] = "<strong style='color: #0f0f0f'>Senha enviada por email!!!</strong>";
             View::make('home/index');
         } else {
-            $_SESSION['danger'] = "Algo inesperado ocorreu ao enviar o email";
+            $_SESSION['danger'] ="<strong style='color: #0f0f0f'>Algo inesperado ocorreu ao enviar o email</strong>";
             View::make('home/index');
         }
         die();
@@ -105,10 +106,10 @@ Class UsuarioController
     {
         $dados = $_POST;
         if (Usuario::alteraSenha($dados)) {
-            $_SESSION['success'] = "Senha alterada com sucesso";
+            $_SESSION['success'] = "<strong style='color: #0f0f0f'>Senha alterada com sucesso</strong>";
             View::make('home/index');
         } else {
-            $_SESSION['danger'] = "Ocorreu algum problema interno";
+            $_SESSION['danger'] = "<strong style='color: #0f0f0f'>Ocorreu algum problema interno</strong>";
             View::make('home/index');
         }
     }
