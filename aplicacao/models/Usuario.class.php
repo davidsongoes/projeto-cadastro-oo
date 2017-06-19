@@ -69,17 +69,11 @@ Class Usuario extends UsuarioDAO{
             AbstractModel::executar(self::QUERY_ALTER_USER, array(
                 ':id' => $dados['id'],
                 ':saram' => $dados['saram'],
-                ':posto_graduacao' => $dados['posto_graduacao'],
-                ':especialidade' =>  $dados['especialidade'],
-                ':ramal' => $dados['ramal'],
                 ':nome' => $dados['nome'],
-                ':data_nascimento' => AbstractModel::formataData($dados['data_nascimento']),
-                ':data_ultima_promocao' => AbstractModel::formataData($dados['data_ultima_promocao']),
-                ':data_praca' => AbstractModel::formataData($dados['data_praca']),
-                ':secao' => $dados['secao'],
                 ':login' => $dados['login'],
                 ':email' => $dados['email'],
                 ':grupo' => $dados['grupo'],
+                ':ativo' => $dados['ativo']
             ));
             return true;
         } catch (\PDOException  $e) {
@@ -92,11 +86,9 @@ Class Usuario extends UsuarioDAO{
         foreach($consulta as $result){
             $usuario = new Usuario();
             $usuario->id = $result['id'];
+            $usuario->login = $result['login'];
             $usuario->saram = $result['saram'];
-            $usuario->postoGraduacao = $result['posto_graduacao'];
-            $usuario->especialidade = $result['especialidade'];
             $usuario->nome = $result['nome'];
-            $usuario->secao = $result['secao'];
             $usuario->grupo = $result['grupo'];
             $usuarios[] = $usuario;
         }
@@ -118,19 +110,12 @@ Class Usuario extends UsuarioDAO{
             $usuario = new Usuario();
             $usuario->id = $result['id'];
             $usuario->saram = $result['saram'];
-            $usuario->postoGraduacao = $result['posto_graduacao'];
-            $usuario->especialidade = $result['especialidade'];
-            $usuario->secao = $result['secao'];
-            $usuario->grupo = $result['grupo'];
-            $usuario->ramal = $result['ramal'];
             $usuario->nome = $result['nome'];
             $usuario->login = $result['login'];
             $usuario->grupo = $result['grupo'];
-            $usuario->dataPraca = AbstractModel::desformataData($result['data_praca']);
-            $usuario->dataNascimento = AbstractModel::desformataData($result['data_nascimento']);
-            $usuario->dataUltimaPromocao = AbstractModel::desformataData($result['data_ultima_promocao']);
             $usuario->email = $result['email'];
             $usuario->senha = $result['senha'];
+            $usuario->ativo = $result['ativo'];
         }
         return isset($usuario) ? $usuario : NULL;
     }
