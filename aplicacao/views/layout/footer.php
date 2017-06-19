@@ -1,5 +1,5 @@
 
-
+<div class="container-fluid margem_direita">
 <hr>
 <footer>
     <small>Copyright © <?=date('Y');?> | DIRENS</small>
@@ -11,7 +11,7 @@
     <img src="../dist/images/github.png" alt=""/>
 </footer>
 </div>
-
+</div>
 </body>
 
 </html>
