@@ -23,17 +23,7 @@ use models\Efetivo;
                         <input type="text" class="form-control" id="saram" placeholder="Saram" name="saram" required="required" value="<?=$usuario->saram?>">
                     </div>
                 </div>
-                <div class="form-group">
-                    <label for="quadro" class="col-sm-2 control-label">Quadro</label>
-                    <div class="col-sm-6">
-                        <select type="text" class="form-control" id="quadro" name="quadro" required="required" >
-                            <option value="<?php if (!empty($efetivo->quadro)) echo $efetivo->quadro ?>"><?php if (!empty($efetivo->quadro)) echo Efetivo::allQuadro($efetivo->quadro) ?></option>
-                            <?php foreach (Efetivo::allQuadro() as $quadro): ?>
-                                <option value="<?= $quadro['id_quadro'] ?>"><?= $quadro['quadro'] ?></option>
-                            <?php endforeach; ?>
-                        </select>
-                    </div>
-                </div>
+
                 <div class="form-group">
                     <label for="post_grad_id" class="col-sm-2 control-label">Posto/Graduação</label>
                     <div class="col-sm-6">
@@ -41,6 +31,17 @@ use models\Efetivo;
                             <option value="<?php if (!empty($efetivo->posto_graduacao)) echo $efetivo->posto_graduacao ?>"><?php if (!empty($efetivo->posto_graduacao)) echo Efetivo::allPostoGraduacao($efetivo->posto_graduacao) ?></option>
                             <?php foreach (Efetivo::allPostoGraduacao() as $posto_graduacao): ?>
                                 <option value="<?= $posto_graduacao['id_posto_grad'] ?>"><?= $posto_graduacao['posto_grad'] ?></option>
+                            <?php endforeach; ?>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="quadro" class="col-sm-2 control-label">Quadro</label>
+                    <div class="col-sm-6">
+                        <select type="text" class="form-control" id="quadro" name="quadro" required="required" >
+                            <option value="<?php if (!empty($efetivo->quadro)) echo $efetivo->quadro ?>"><?php if (!empty($efetivo->quadro)) echo Efetivo::allQuadro($efetivo->quadro) ?></option>
+                            <?php foreach (Efetivo::allQuadro() as $quadro): ?>
+                                <option value="<?= $quadro['id_quadro'] ?>"><?= $quadro['quadro'] ?></option>
                             <?php endforeach; ?>
                         </select>
                     </div>
@@ -57,6 +58,18 @@ use models\Efetivo;
                     </div>
                 </div>
                 <div class="form-group">
+                    <label for="nome_completo" class="col-sm-2 control-label">Nome Completo</label>
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control" id="nome_completo" placeholder="Nome Completo" name="nome_completo" required="required" value="<?php echo $efetivo->nome_completo?>">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="nome_guerra" class="col-sm-2 control-label">Nome de Guerra</label>
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control" id="nome_guerra" placeholder="Nome de Guerra" name="nome_guerra" required="required" value="<?php echo $efetivo->nome_guerra?>">
+                    </div>
+                </div>
+                <div class="form-group">
                     <label for="situacao" class="col-sm-2 control-label">Situação</label>
                     <div class="col-sm-6">
                         <select type="text" class="form-control" id="situacao" name="situacao" required="required" >
@@ -65,19 +78,6 @@ use models\Efetivo;
                                 <option value="<?=$chave;?>"><?=$secao?></option>
                             <?php endforeach; ?>
                         </select>
-                    </div>
-                </div>
-                </div>
-            <div class="col-lg-6">
-                <div class="form-group">
-                    <label for="nome_completo" class="col-sm-2 control-label">Nome Completo</label>
-                    <div class="col-sm-6">
-                        <input type="text" class="form-control" id="nome_completo" placeholder="Nome Completo" name="nome_completo" required="required" value="<?php echo $efetivo->nome_completo?>">
-                    </div>
-                </div><div class="form-group">
-                    <label for="nome_guerra" class="col-sm-2 control-label">Nome de Guerra</label>
-                    <div class="col-sm-6">
-                        <input type="text" class="form-control" id="nome_guerra" placeholder="Nome de Guerra" name="nome_guerra" required="required" value="<?php echo $efetivo->nome_guerra?>">
                     </div>
                 </div>
                 <div class="form-group">
@@ -92,13 +92,6 @@ use models\Efetivo;
                         <input type="text" class="form-control datepicker" id="data_ultima_promocao" placeholder="Data da Última Promoção" name="data_ultima_promocao" required="required" value="<?php echo $efetivo->data_ultima_promocao?>">
                     </div>
                 </div>
-            </div>
-            </div>
-<!--            fim dados pesssoais referentes ao militar-->
-        <hr/>
-<!--            dados referentes à seção do militar-->
-        <div class="row">
-            <div class="col-lg-6">
                 <div class="form-group">
                     <label for="secao" class="col-sm-2 control-label">Seção</label>
                     <div class="col-sm-6">
@@ -122,26 +115,23 @@ use models\Efetivo;
                         <input type="text" class="form-control" id="rtcaer" placeholder="RTCAER" name="rtcaer" value="<?php echo $efetivo->rtcaer?>">
                     </div>
                 </div>
-            </div>
-            <div class="col-lg-6">
                 <div class="form-group">
                     <label for="email" class="col-sm-2 control-label">E-mail Intraer</label>
                     <div class="col-sm-6">
                         <input type="email" class="form-control" id="email" placeholder="exemplo@fab.mil.br" name="email" required="required" value="<?php echo $efetivo->email?>">
                     </div>
                 </div>
-            </div>
-            <div class="col-lg-6">
                 <div class="form-group">
                     <label for="antiguidade_turma" class="col-sm-2 control-label">Antiguidade Turma</label>
                     <div class="col-sm-6">
                         <input type="number" class="form-control" id="antiguidade_turma" placeholder="Somente Números" name="antiguidade_turma" required="required" value="<?php echo $efetivo->antiguidade_turma?>">
                     </div>
                 </div>
+                </div>
+            <div class="col-lg-6">
+                profile image
             </div>
-        </div>
-<!--        fim dados do depens referentes ao usuario-->
-
+            </div>
         <div class="row">
             <div class="form-group">
                 <div class="col-sm-offset-5 col-sm-10">
