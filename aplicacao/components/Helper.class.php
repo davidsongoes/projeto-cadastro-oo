@@ -7,6 +7,11 @@
  */
 namespace components;
  class Helper{
+
+     static public $ativo =[
+       '0' => "Não",
+       '1' => "Sim"
+     ];
      static public $situacao = [
          '1' => "Ativa",
          '2' => "R1",
@@ -73,7 +78,7 @@ namespace components;
 
     ];
      static public $grupos = [
-         '1' => 'Usuario',
+         '1' => 'Usuário',
          '2' => 'Administrador',
          '3' => 'Solucionador.Geral',
          '4' => 'Solucionador.Rede',
@@ -94,7 +99,6 @@ namespace components;
                 <?php
                 echo $_SESSION[$tipo];
                 unset($_SESSION[$tipo]);
-                unset($_POST);
                 ?>
              </div>
 
