@@ -32,11 +32,11 @@ use models\base\AbstractModel;
                         </div>
                         <!--                Posto/Graduação-->
                         <div class="form-group">
-                            <label for="post_grad_id" class="col-sm-2 control-label">Posto<br>Graduação</label>
+                            <label for="posto_graduacao" class="col-sm-2 control-label">Posto<br>Graduação</label>
                             <div class="col-sm-5">
                                 <select type="text" class="form-control" id="posto_graduacao" name="posto_graduacao"
                                         required="required">
-                                    <option value="<?php echo $efetivo->posto_graduacao ?>"><?php echo $efetivo->posto_graduacao ?></option>
+                                    <option value="<?php echo $efetivo->posto_graduacao ?>"><?php echo Efetivo::buscaPostoGraduacao($efetivo->posto_graduacao) ?></option>
                                     <?php foreach (Efetivo::allPostoGraduacao() as $posto_graduacao): ?>
                                         <option value="<?= $posto_graduacao['id_posto_grad'] ?>"><?= $posto_graduacao['posto_grad'] ?></option>
                                     <?php endforeach; ?>
@@ -45,10 +45,10 @@ use models\base\AbstractModel;
                         </div>
                         <!--                Quadro-->
                         <div class="form-group">
-                            <label for="especialidade" class="col-sm-2 control-label">Quadro</label>
+                            <label for="quadro" class="col-sm-2 control-label">Quadro</label>
                             <div class="col-sm-5">
                                 <select type="text" class="form-control" id="quadro" name="quadro" required="required">
-                                    <option value="<?php echo $efetivo->quadro ?>"><?php echo $efetivo->quadro ?></option>
+                                    <option value="<?php echo $efetivo->quadro ?>"><?php echo Efetivo::buscaQuadro($efetivo->quadro) ?></option>
                                     <?php foreach (Efetivo::allQuadro() as $quadro): ?>
                                         <option value="<?= $quadro['id_quadro'] ?>"><?= $quadro['quadro'] ?></option>
                                     <?php endforeach; ?>
@@ -60,7 +60,7 @@ use models\base\AbstractModel;
                             <div class="col-sm-5">
                                 <select type="text" class="form-control" id="especialidade" name="especialidade"
                                         required="required">
-                                    <option value="<?php echo $efetivo->especialidade ?>"><?php echo $efetivo->especialidade ?></option>
+                                    <option value="<?php echo $efetivo->especialidade ?>"><?php echo Efetivo::buscaEspecialidade($efetivo->especialidade) ?></option>
                                     <?php foreach (Efetivo::allEspecialidade() as $especialidade): ?>
                                         <option value="<?= $especialidade['id_esp'] ?>"><?= $especialidade['esp'] ?></option>
                                     <?php endforeach; ?>
@@ -114,10 +114,10 @@ use models\base\AbstractModel;
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="especialidade" class="col-sm-2 control-label">Seção</label>
+                            <label for="secao" class="col-sm-2 control-label">Seção</label>
                             <div class="col-sm-5">
                                 <select type="text" class="form-control" id="secao" name="secao" required="required">
-                                    <option value="<?php echo $efetivo->secao ?>"><?php echo $efetivo->secao ?></option>
+                                    <option value="<?php echo $efetivo->secao ?>"><?php echo Efetivo::buscaSecao($efetivo->secao) ?></option>
                                     <?php foreach (Efetivo::allSecao() as $secao): ?>
                                         <option value="<?= $secao['id_secao'] ?>"><?= $secao['secao'] ?></option>
                                     <?php endforeach; ?>
