@@ -87,13 +87,14 @@ namespace components;
 
      static public function mostraAlerta($tipo){
          if(isset($_SESSION[$tipo])): ?>
-             <div class="alert alert-<?php echo $tipo?> alert-dismissible fade in" role="alert">
+             <div class="alert alert-<?php echo $tipo?> alert-dismissible fade in" role="alert" id="alert-<?php echo $tipo?>">
                  <button class="close" aria-label="Close" data-dismiss="alert" type="button">
-                     <span aria-hidden="true">×</span>
+                     <span aria-hidden="true" style="color: #0f0f0f">×</span>
                      </button>
                 <?php
                 echo $_SESSION[$tipo];
                 unset($_SESSION[$tipo]);
+                unset($_POST);
                 ?>
              </div>
 
