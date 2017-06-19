@@ -21,6 +21,12 @@ include(__DIR__ . '/../layout/header.php');
                 <li class="breadcrumb-item active">Lista do Efetivo</li>
             </ol>
             <h1>Lista do Efetivo</h1><br/>
+
+            <?php
+            \components\Helper::mostraAlerta("success");
+            \components\Helper::mostraAlerta("warning");
+            \components\Helper::mostraAlerta("danger");
+            ?>
             <!--            Busca-->
             <div id="custom-search-input">
                 <div class="input-group col-md-12">
