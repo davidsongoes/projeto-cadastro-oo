@@ -16,7 +16,7 @@ use models\base\AbstractModel;
                     <li class="breadcrumb-item"><a href="index.php?c=efetivo&acao=listarMilitares">Lista do Efetivo</a>
                     </li>
                     <li class="breadcrumb-item active">Editar Dados
-                        - <?php echo (!empty($efetivo->id)) ? $efetivo->posto_graduacao . ' ' . utf8_encode($efetivo->nome_guerra) : "Novo Cadastro";?></li>
+                        - <?php echo (!empty($efetivo->id)) ? Efetivo::buscaPostoGraduacao($efetivo->posto_graduacao) . ' ' . utf8_encode($efetivo->nome_guerra) : "Novo Cadastro";?></li>
                 </ol>
             <h1>Editar Dados</h1>
             <form class="form-horizontal" role="form" method="post" action="index.php?c=efetivo&acao=editarMilitar">
