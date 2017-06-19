@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="dist/css/main.css">
     <script src="dist/js/jquery-latest.min.js" type="text/javascript"></script>
     <script src="dist/js/script.js"></script>
+    <script src="dist/js/alert.js"></script>
     <script src="dist/js/image_upload.js"></script>
     <script src="dist/js/bootstrap.min.js"></script>
 
