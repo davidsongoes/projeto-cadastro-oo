@@ -3,12 +3,19 @@ include(__DIR__ . '/../layout/header.php');
 use components\Helper;
 ?>
 <div class="row">
-    <div class="col-lg-3">
+    <div class="col-lg-2">
         <?php  include(__DIR__ . '/../layout/menu.php');?>
     </div>
-    <div class="col-lg-9">
-
-<h1>Editar Novo Usuario</h1>
+    <div class="col-lg-10">
+        <div class="container-fluid margem_direita">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="index.php">Home</a></li>
+                <li class="breadcrumb-item"><a href="index.php?c=usuario&acao=exibir">Lista de Usuários</a>
+                </li>
+                <li class="breadcrumb-item active">Editar Novo Usuário
+                    - <?php echo (!empty($usuario->id)) ?  strtolower($usuario->login) : "Novo Cadastro";?></li>
+            </ol>
+<h1>Editar Novo Usuário</h1>
     <form class="form-horizontal" role="form" method="post" action="index.php?c=usuario&acao=editarUsuario">
         <input type="hidden" name="id" value="<?php echo $usuario->id ?>"/>
         <div class="row">
@@ -20,72 +27,15 @@ use components\Helper;
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="post_grad_id" class="col-sm-2 control-label">Posto ou graduação</label>
-                    <div class="col-sm-10">
-                        <select type="text" class="form-control" id="posto_graduacao" name="posto_graduacao" required="required" >
-                            <option value="<?php echo $usuario->postoGraduacao?>"><?php echo Helper::$posto_graduacoes[$usuario->postoGraduacao] ?></option>
-                            <?php  foreach(Helper::$posto_graduacoes as $chave => $secao):?>
-                                <option value="<?=$chave;?>"><?=$secao?></option>
-                            <?php endforeach; ?>
-                        </select>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="especialidade" class="col-sm-2 control-label">Especialidade</label>
-                    <div class="col-sm-10">
-                        <select type="text" class="form-control" id="especialidade" name="especialidade" required="required">
-                            <option value="<?php echo $usuario->especialidade?>"><?php echo Helper::$especialidades[$usuario->especialidade] ?></option>
-                            <?php  foreach(Helper::$especialidades as $chave => $secao):?>
-                                <option value="<?=$chave;?>"><?=$secao?></option>
-                            <?php endforeach; ?>
-                        </select>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="ramal" class="col-sm-2 control-label">Ramal:</label>
-                    <div class="col-sm-10">
-                        <input type="number" class="form-control" id="ramal" placeholder="ramal" name="ramal" required="required" value="<?php echo $usuario->ramal?>">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="nome" class="col-sm-2 control-label">Nome:</label>
-                    <div class="col-sm-10">
-                        <input type="text" class="form-control" id="nome" placeholder="nome" name="nome" required="required" value="<?php echo $usuario->nome?>">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="data_nascimento" class="col-sm-2 control-label">Data Nascimento:</label>
-                    <div class="col-sm-10">
-                        <input type="text" class="form-control datepicker" id="data_nascimento" placeholder="data_nascimento" name="data_nascimento" required="required" value="<?php echo $usuario->dataNascimento?>">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="data_ultima_promocao" class="col-sm-2 control-label">Data Ultima Promoção:</label>
-                    <div class="col-sm-10">
-                        <input type="text" class="form-control datepicker" id="data_ultima_promocao" placeholder="data_ultima_promocao" name="data_ultima_promocao" required="required" value="<?php echo $usuario->dataUltimaPromocao?>">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="data_praca" class="col-sm-2 control-label">Data de Praça:</label>
-                    <div class="col-sm-10">
-                        <input type="text" class="form-control datepicker" id="data_praca" placeholder="data_praca" name="data_praca" required="required" value="<?php echo $usuario->dataPraca?>">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="secao" class="col-sm-2 control-label">Seção</label>
-                    <div class="col-sm-10">
-                        <select type="text" class="form-control" id="secao" name="secao" required="required">
-                            <option value="<?php echo $usuario->secao?>"><?php echo Helper::$secoes[$usuario->secao] ?></option>
-                            <?php  foreach(Helper::$secoes as $chave => $secao):?>
-                                <option value="<?=$chave;?>"><?=$secao?></option>
-                            <?php endforeach; ?>
-                        </select>
-                    </div>
-                </div>
-                <div class="form-group">
                     <label for="login" class="col-sm-2 control-label">Login</label>
                     <div class="col-sm-10">
                         <input type="text" class="form-control" id="login" placeholder="login" name="login" required="required" value="<?php echo $usuario->login?>">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="nome" class="col-sm-2 control-label">Nome Completo:</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="nome" placeholder="nome" name="nome" required="required" value="<?php echo $usuario->nome?>">
                     </div>
                 </div>
                 <div class="form-group">
@@ -94,23 +44,38 @@ use components\Helper;
                         <input type="email" class="form-control" id="email" placeholder="exemplo@depens.intraer" name="email" required="required" value="<?php echo $usuario->email?>">
                     </div>
                 </div>
-                <select type="text" class="form-control" id="grupo" name="grupo" required="required">
-                    <option value="<?php echo $usuario->grupo ?>"><?php echo Helper::$grupos[$usuario->grupo] ?></option>
-                    <?php  foreach(Helper::$grupos as $chave => $grupo):?>
-                        <option value="<?=$chave;?>"><?=$grupo?></option>
-                    <?php endforeach; ?>
-                </select>
-
+                <div class="form-group">
+                    <label for="grupo" class="col-sm-2 control-label">Grupo</label>
+                    <div class="col-sm-10">
+                        <select type="text" class="form-control" id="grupo" name="grupo" required="required">
+                            <option value="<?php echo $usuario->grupo ?>"><?php echo Helper::$grupos[$usuario->grupo] ?></option>
+                            <?php  foreach(Helper::$grupos as $chave => $grupo):?>
+                                <option value="<?=$chave;?>"><?=$grupo?></option>
+                            <?php endforeach; ?>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="ativo" class="col-sm-2 control-label">Ativo</label>
+                    <div class="col-sm-10">
+                        <select type="text" class="form-control" id="ativo" name="ativo" required="required">
+                            <option value="<?php echo $usuario->ativo ?>"><?php echo Helper::$ativo[$usuario->ativo] ?></option>
+                            <?php  foreach(Helper::$ativo as $chave => $ativo):?>
+                                <option value="<?=$chave;?>"><?=$ativo?></option>
+                            <?php endforeach; ?>
+                        </select>
+                    </div>
+                </div>
             </div>
-
         <div class="row">
             <div class="form-group">
-                <div class="col-sm-offset-2 col-sm-10">
-                    <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-ok"></span> Cadastrar</button>
+                <div class="col-sm-offset-3 col-sm-5">
+                    <button type="submit" class="btn btn-warning"><span class="glyphicon glyphicon-pencil"></span> Editar</button>
                 </div>
             </div>
         </div>
     </form>
+    </div>
     </div>
     </div>
 
