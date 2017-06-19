@@ -16,14 +16,14 @@ use components\Helper;
         ?>
         <div class="panel panel-default ">
             <div class="panel-body">
-                <h3><b>STI</b> - Solicitação de serviço </h3>
+                <h3><b>SISCONE</b><br>Sistema de Controle de Efetivo</h3>
                 <hr/>
                 <form class="form-horizontal" role="form" method="post" action="index.php?c=usuario&acao=autenticarUsuario">
 
                     <div class="form-group">
                         <label class="col-sm-1 col-sm-offset-3 control-label"><span class="glyphicon glyphicon-user"></span></label>
                         <div class="col-sm-5">
-                            <input type="text" placeholder="usuario" class="form-control" name="login" required="required"/>
+                            <input type="text" placeholder="Usuário" class="form-control" name="login" required="required"/>
                         </div>
                     </div>
                     <div class="form-group">
@@ -32,8 +32,9 @@ use components\Helper;
                             <input type="password" placeholder="Senha" class="form-control" name="senha" required="required"/>
                         </div>
                     </div>
+                    <input type="submit" class="btn btn-primary" value="Entrar"/>
+                    <br>
                     <a data-toggle="modal" data-target="#myModal">Perdeu a senha?</a>
-                    <input type="submit" class="btn btn-primary esquerda" value="Login"/>
                 </form>
             </div>
 
