@@ -108,6 +108,8 @@ function executarEfetivoController($acao){
     $controller = new \controllers\EfetivoController();
     if($acao == 'novoMilitar'){
         $controller->novoMilitar();
+    }elseif($acao == 'viewNovoMilitar'){
+        $controller->viewNovoMilitar();
     }elseif($acao == 'listarMilitares'){
         $controller->listarMilitares();
     }elseif($acao == 'excluirMilitar'){
