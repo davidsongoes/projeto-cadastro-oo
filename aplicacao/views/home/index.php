@@ -12,6 +12,7 @@
             </ol>
                 <?php
                 \components\Helper::mostraAlerta("success");
+                \components\Helper::mostraAlerta("warning");
                 \components\Helper::mostraAlerta("danger");
                 ?>
                 <p><b>Seja Bem-Vindo</b></p>
