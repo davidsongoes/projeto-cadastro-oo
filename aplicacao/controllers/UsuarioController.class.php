@@ -36,6 +36,15 @@ Class UsuarioController
         }
     }
 
+    public function cadastrarUsuario()
+    {
+        $dados = $_POST;
+        if (Usuario::cadastraUsuario($dados)) {
+            $_SESSION['success'] = "<strong style='color: #0f0f0f'>Usuário cadastrado!<br>Aguarde algum Administrador ativa-ló!</strong>";
+            View::make('usuario/login');
+        }
+    }
+
     public function exibir()
     {
         $usuarios = Usuario::buscarTodos();
@@ -58,9 +67,8 @@ Class UsuarioController
     {
         $dados = $_POST;
         if (Usuario::editaUsuario($dados)) {
-            $_SESSION['warning'] ="<strong style='color: #0f0f0f'>Usuario alterado com sucesso!</strong>";
-            $usuarios = Usuario::buscarTodos();
-            View::make('usuario/exibir', array('usuarios' => $usuarios));
+            $_SESSION['warning'] = "<strong style='color: #0f0f0f'>Usuario alterado com sucesso!</strong>";
+            View::make('home/index');
         }
     }
 
@@ -76,13 +84,20 @@ Class UsuarioController
     public function autenticarUsuario()
     {
         $dados = $_POST;
-        if ($usuario = Usuario::buscaUsuario($dados)) {
-            $_SESSION['id'] = $usuario->id;
+        $usuario = Usuario::buscaUsuario($dados);
+        if (isset($usuario)){
+            if($usuario->ativo == 0){
+                $_SESSION['danger'] = "<strong style='color: #0f0f0f'>Usuario não ativo!<br>Aguarde um Administrador ativar seu cadastro.</strong>";
+                View::make('home/index');
+                die();
+            }else{
+                $_SESSION['id'] = $usuario->id;
             $_SESSION['usuario_logado'] = $usuario->nome;
             $_SESSION['grupo'] = $usuario->grupo;
             $_SESSION['login'] = $usuario->login;
             View::make('home/index');
-        } else {
+            }
+        }else{
             $_SESSION['danger'] = "<strong style='color: #0f0f0f'>Usuario ou senha inválido</strong>";
             View::make('home/index');
             die();
@@ -96,7 +111,7 @@ Class UsuarioController
             $_SESSION['success'] = "<strong style='color: #0f0f0f'>Senha enviada por email!!!</strong>";
             View::make('home/index');
         } else {
-            $_SESSION['danger'] ="<strong style='color: #0f0f0f'>Algo inesperado ocorreu ao enviar o email</strong>";
+            $_SESSION['danger'] = "<strong style='color: #0f0f0f'>Algo inesperado ocorreu ao enviar o email</strong>";
             View::make('home/index');
         }
         die();
