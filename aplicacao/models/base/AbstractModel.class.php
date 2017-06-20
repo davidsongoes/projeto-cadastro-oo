@@ -73,7 +73,7 @@ abstract class AbstractModel
     {
         $stmt = PDOUtil::getInstance()->obterConexao()->prepare($sql);
         $stmt->execute($dados);
-        return $stmt->fetch();
+        return $stmt->fetch(\PDO::FETCH_ASSOC);
     }
 
     static public function parseNameId($tabela, $coluna, $dado, $id)
