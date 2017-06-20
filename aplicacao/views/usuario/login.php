@@ -13,6 +13,7 @@ use components\Helper;
         <?php
         Helper::mostraAlerta("success");
         Helper::mostraAlerta("danger");
+        Helper::mostraAlerta("warning");
         ?>
         <div class="panel panel-default ">
             <div class="panel-body">
@@ -56,15 +57,15 @@ use components\Helper;
             <div class="modal-body">
                 <form  class="form-horizontal" role="form" method="post" action="index.php?c=usuario&acao=recuperarSenha">
                     <div class="form-group">
-                        <label for="email" class="col-sm-2 control-label">Email: </label>
-                        <div class="col-sm-10">
-                            <input type="email" class="form-control" id="email" placeholder="Email" name="email" required="required">
+                        <label for="email" class="col-sm-3 control-label">Email</label>
+                        <div class="col-sm-9">
+                            <input type="email" class="form-control" id="email" placeholder="Email cadastrado" name="email" required="required">
                         </div>
                     </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
-                <button type="submit" class="btn btn-primary">Enviar</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Fechar</button>
+                <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-thumbs-up"></span> Enviar</button>
             </div>
             </form>
         </div><!-- /.modal-content -->
@@ -80,20 +81,55 @@ use components\Helper;
                 <h4 class="modal-title">Cadastro</h4>
             </div>
             <div class="modal-body">
-                <form  class="form-horizontal" role="form" method="post" action="index.php?c=usuario&acao=cadastrar">
-                    <div class="form-group">
-                        <label for="email" class="col-sm-2 control-label">Email: </label>
-                        <div class="col-sm-10">
-                            <input type="email" class="form-control" id="email" placeholder="Email" name="email" required="required">
+                <div class="container-fluid">
+                <form class="form-horizontal" role="form" method="post" action="index.php?c=usuario&acao=novo">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="form-group">
+                                <label for="saram" class="col-sm-3 control-label">SARAM</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" id="saram" placeholder="SARAM"
+                                           name="saram" required="required" value="<?= $usuario->saram ?>">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="login" class="col-sm-3 control-label">Login</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" id="login" placeholder="Nome de guerra e iniciais" name="login"
+                                           required="required" value="<?php echo $usuario->login ?>">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="nome" class="col-sm-3 control-label">Nome Completo</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" id="nome" placeholder="Nome Completo" name="nome"
+                                           required="required" value="<?php echo $usuario->nome ?>">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="email" class="col-sm-3 control-label">E-mail Intraer</label>
+                                <div class="col-sm-9">
+                                    <input type="email" class="form-control" id="email"
+                                           placeholder="exemplo@fab.mil.br" name="email" required="required"
+                                           value="<?php echo $usuario->email ?>">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="senha" class="col-sm-3 control-label">Senha</label>
+                                <div class="col-sm-9">
+                                    <input type="password" class="form-control" id="senha" placeholder="Senha"
+                                           name="senha" required="required" value="<?php echo $usuario->senha ?>">
+                                </div>
+                            </div>
                         </div>
-                    </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
-                <button type="submit" class="btn btn-primary">Enviar</button>
-            </div>
-            </form>
+                </form>
+                </div>
         </div><!-- /.modal-content -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Fechar</button>
+                <button type="submit" class="btn btn-default"><span
+                            class="glyphicon glyphicon-thumbs-up"></span> Enviar</button>
+            </div>
     </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
 
