@@ -36,15 +36,6 @@ Class UsuarioController
         }
     }
 
-    public function cadastrarUsuario()
-    {
-        $dados = $_POST;
-        if (Usuario::cadastraUsuario($dados)) {
-            $_SESSION['success'] = "<strong style='color: #0f0f0f'>Usuário cadastrado!<br>Aguarde algum Administrador ativa-ló!</strong>";
-            View::make('usuario/login');
-        }
-    }
-
     public function exibir()
     {
         $usuarios = Usuario::buscarTodos();
@@ -87,7 +78,7 @@ Class UsuarioController
         $usuario = Usuario::buscaUsuario($dados);
         if (isset($usuario)){
             if($usuario->ativo == 0){
-                $_SESSION['danger'] = "<strong style='color: #0f0f0f'>Usuario não ativo!<br>Aguarde um Administrador ativar seu cadastro.</strong>";
+                $_SESSION['warning'] = "<strong style='color: #0f0f0f'>Usuario não ativo!<br>Aguarde um Administrador ativar seu cadastro.</strong>";
                 View::make('home/index');
                 die();
             }else{
