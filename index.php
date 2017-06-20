@@ -15,13 +15,12 @@ function roteamento()
 		executarChamadoController($acao);
 	}elseif ($c == 'efetivo'){
 	    executarEfetivoController($acao);
-    }
-	elseif($c =='usuario'){
+    }elseif($c =='usuario'){
 		executarUsuarioController($acao);
 	}
 	else{
 		$controller = new \controllers\HomeController();
-		$controller->index();	
+		$controller->index();
 	}
 }
 function executarUsuarioController($acao){
@@ -48,9 +47,11 @@ function executarUsuarioController($acao){
 			$controller->alterarDados();
 		}elseif($acao == 'editar'){
 			$controller->editar();
-		}elseif($acao == 'editarUsuario'){
-			$controller->editarUsuario();
-		}elseif($acao =='recuperarSenha'){
+		}elseif($acao == 'cadastrarUsuario'){
+			$controller->cadastrarUsuario();
+        }elseif($acao == 'editarUsuario'){
+            $controller->editarUsuario();
+        }elseif($acao =='recuperarSenha'){
 			$controller->recuperarSenha();
 		}else{
 		$controller->index();
