@@ -17,7 +17,7 @@ class UsuarioDAO extends AbstractModel {
     const QUERY_POR_ID = "select * from tbl_usuario where id = :id";
     const DElETE_BY_ID = 'delete from tbl_usuario where id = :id';
     const QUERY_INSERT = "insert into tbl_usuario (saram, nome, login, senha, email, grupo, ativo)
-                          VALUES (:saram, :nome, :login, :senha, :email, :grupo, 0)";
+                          VALUES (:saram, :nome, :login, :senha, :email, :grupo, :ativo)";
     const QUERY_POR_GRUPO = "select id, nome from tbl_usuario where grupo >= :grupo";
 
 
