@@ -13,17 +13,11 @@ use models\base\AbstractModel;
 
 Class Usuario extends UsuarioDAO{
     public $saram;
-    public $postoGraduacao;
-    public $especialidade;
-    public $ramal;
     public $nome;
-    public $dataNascimento;
-    public $dataUltimaPromocao;
-    public $dataPraca;
-    public $secao;
     public $login;
     public $email;
     public $senha;
+    public $ativo;
     public $grupo;
 
     static public function buscaUsuario($dados){
@@ -32,9 +26,12 @@ Class Usuario extends UsuarioDAO{
         if($result){
             $usuario = new Usuario();
             $usuario->id = $result['id'];
+            $usuario->saram = $result['saram'];
             $usuario->nome = $result['nome'];
             $usuario->login = $result['login'];
             $usuario->senha = $result['senha'];
+            $usuario->email = $result['email'];
+            $usuario->ativo = $result['ativo'];
             $usuario->grupo = $result['grupo'];
         }
         return isset($usuario) ? $usuario : NULL;
@@ -45,17 +42,11 @@ Class Usuario extends UsuarioDAO{
         try {
             AbstractModel::executar(self::QUERY_INSERT,array(
                 ':saram' => $dados['saram'],
-                ':posto_graduacao' => $dados['posto_graduacao'],
-                ':especialidade' =>  $dados['especialidade'],
-                ':ramal' => $dados['ramal'],
                 ':nome' => $dados['nome'],
-                ':data_nascimento' => AbstractModel::formataData($dados['data_nascimento']),
-                ':data_ultima_promocao' => AbstractModel::formataData($dados['data_ultima_promocao']),
-                ':data_praca' => AbstractModel::formataData($dados['data_praca']),
-                ':secao' => $dados['secao'],
                 ':login' => $dados['login'],
                 ':senha' => md5($dados['senha']),
                 ':email' => $dados['email'],
+                ':ativo' => $dados['ativo'],
                 ':grupo' => $dados['grupo']
             ));
             return true;
@@ -63,6 +54,11 @@ Class Usuario extends UsuarioDAO{
             echo 'Error: ' . $e->getMessage();
         }
     }
+
+    public static function cadastraUsuario($dados){
+
+    }
+
     static public function editaUsuario($dados)
     {
         try {
@@ -89,6 +85,7 @@ Class Usuario extends UsuarioDAO{
             $usuario->login = $result['login'];
             $usuario->saram = $result['saram'];
             $usuario->nome = $result['nome'];
+            $usuario->ativo = $result['ativo'];
             $usuario->grupo = $result['grupo'];
             $usuarios[] = $usuario;
         }
