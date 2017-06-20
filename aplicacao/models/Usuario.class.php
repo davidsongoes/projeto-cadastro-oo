@@ -55,10 +55,6 @@ Class Usuario extends UsuarioDAO{
         }
     }
 
-    public static function cadastraUsuario($dados){
-
-    }
-
     static public function editaUsuario($dados)
     {
         try {
