@@ -42,22 +42,24 @@ class EfetivoController
 
     public function listarMilitares()
     {
-        if ($_SESSION['grupo'] == 4) {
-            $chamados = Chamado::buscaTodosPorSolucionador('2');
-            View::make('chamado/listaChamado', array('chamados' => $chamados));
-        } elseif ($_SESSION['grupo'] == 5) {
-            $chamados = Chamado::buscaTodosPorSolucionador('3');
-            View::make('chamado/listaChamado', array('chamados' => $chamados));
-        } elseif ($_SESSION['grupo'] == 6) {
-            $chamados = Chamado::buscaTodosPorSolucionador('4');
-            View::make('chamado/listaChamado', array('chamados' => $chamados));
-        } elseif ($_SESSION['grupo'] == '2') {
-            $efetivos = Efetivo::buscarMilitares();
-            View::make('efetivo/listarMilitares', array('efetivos' => $efetivos));
-        } else {
-            $chamados = Chamado::buscarTodos();
-            View::make('chamado/listaChamado', array('chamados' => $chamados));
-        }
+        $efetivos = Efetivo::buscarMilitares();
+        View::make('efetivo/listarMilitares', array('efetivos' => $efetivos));
+//        if ($_SESSION['grupo'] == 4) {
+//            $chamados = Chamado::buscaTodosPorSolucionador('2');
+//            View::make('chamado/listaChamado', array('chamados' => $chamados));
+//        } elseif ($_SESSION['grupo'] == 5) {
+//            $chamados = Chamado::buscaTodosPorSolucionador('3');
+//            View::make('chamado/listaChamado', array('chamados' => $chamados));
+//        } elseif ($_SESSION['grupo'] == 6) {
+//            $chamados = Chamado::buscaTodosPorSolucionador('4');
+//            View::make('chamado/listaChamado', array('chamados' => $chamados));
+//        } elseif ($_SESSION['grupo'] == '2') {
+//            $efetivos = Efetivo::buscarMilitares();
+//            View::make('efetivo/listarMilitares', array('efetivos' => $efetivos));
+//        } else {
+//            $chamados = Chamado::buscarTodos();
+//            View::make('chamado/listaChamado', array('chamados' => $chamados));
+//        }
 
     }
 
@@ -70,31 +72,6 @@ class EfetivoController
         $_SESSION['danger'] = "<strong style='color: #0f0f0f'>Militar desativado com successo!</strong>";
         View::make('efetivo/listarMilitares', array('efetivos' => Efetivo::buscarMilitares()));
     }
-
-//    public function excluirMilitar()
-//    {
-//        PDOUtil::transacional(function () {
-//            $dados = $_POST;
-//            if ($dados['trataChamado'] == 'fechaChamado') {
-//                Chamado::fechaChamado($dados);
-//                Historico::novo($dados);
-//                $_SESSION['success'] = "Chamado Fechado com Sucesso!";
-//                View::make('home/index');
-//            }
-//            if ($dados['trataChamado'] == 'atualizaChamado') {
-//                Chamado::atualizaChamado($dados);
-//                Historico::novo($dados);
-//                $_SESSION['success'] = "Chamado Atualizado com Sucesso!";
-//                View::make('home/index');
-//            }
-//            if ($dados['trataChamado'] == 'adicionaSolucionador') {
-//                Chamado::adicionaSolucionador($dados);
-//                Historico::novo($dados);
-//                $_SESSION['success'] = "Foi adicionado um solucionador ao chamado";
-//                View::make('home/index');
-//            }
-//        });
-//    }
 
     public function viewEditarMilitar()
     {
