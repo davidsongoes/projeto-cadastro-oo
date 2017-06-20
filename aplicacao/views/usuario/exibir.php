@@ -36,6 +36,7 @@ use components\Helper;
                         <th style="text-align: center">ID</th>
                         <th style="text-align: center">Login</th>
                         <th style="text-align: center">Nome</th>
+                        <th style="text-align: center">Ativo?</th>
                         <th style="text-align: center">Grupo</th>
                         <th style="text-align: center">Opções</th>
                     </tr>
@@ -44,6 +45,7 @@ use components\Helper;
                         <td><?php echo $usuario->id ?></td>
                         <td><?php echo $usuario->login ?></td>
                         <td><?php echo $usuario->nome; ?></td>
+                        <td><?php echo Helper::$ativo[$usuario->ativo]; ?></td>
                         <td><?php echo Helper::$grupos[$usuario->grupo]; ?></td>
                         <td>
                             <div class="btn-group">
