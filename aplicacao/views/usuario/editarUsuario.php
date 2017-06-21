@@ -50,18 +50,22 @@ use components\Helper;
                                            value="<?php echo $usuario->email ?>">
                                 </div>
                             </div>
-<!--                            <div class="form-group">-->
-<!--                                <label for="grupo" class="col-sm-2 control-label">Grupo</label>-->
-<!--                                <div class="col-sm-10">-->
-<!--                                    <select type="text" class="form-control" id="grupo" name="grupo"-->
-<!--                                            required="required">-->
-<!--                                        <option value="--><?php //echo $usuario->grupo ?><!--">--><?php //echo Helper::$grupos[$usuario->grupo] ?><!--</option>-->
-<!--                                        --><?php //foreach (Helper::$grupos as $chave => $grupo): ?>
-<!--                                            <option value="--><?//= $chave; ?><!--">--><?//= $grupo ?><!--</option>-->
-<!--                                        --><?php //endforeach; ?>
-<!--                                    </select>-->
-<!--                                </div>-->
-<!--                            </div>-->
+                            <?php if ($_SESSION["grupo"] == 2): ?>
+                                <div class="form-group">
+                                    <label for="grupo" class="col-sm-2 control-label">Grupo</label>
+                                    <div class="col-sm-10">
+                                        <select type="text" class="form-control" id="grupo" name="grupo"
+                                                required="required">
+                                            <option value="<?php echo $usuario->grupo ?>"><?php echo Helper::$grupos[$usuario->grupo] ?></option>
+                                            <?php foreach (Helper::$grupos as $chave => $grupo): ?>
+                                                <option value="<?= $chave; ?>"><?= $grupo ?></option>
+                                            <?php endforeach; ?>
+                                        </select>
+                                    </div>
+                                </div>
+                            <?php else: ?>
+                            <input type="hidden" name="grupo" value="<?php echo $usuario->grupo = "1" ?>"/>
+                            <?php endif; ?>
                             <div class="form-group">
                                 <label for="ativo" class="col-sm-2 control-label">Ativo</label>
                                 <div class="col-sm-10">
