@@ -29,7 +29,9 @@ function executarUsuarioController($acao){
 			$controller->exibir();
 		}elseif($acao == 'novo'){
 			$controller->novo();
-		}elseif($acao == 'autenticarUsuario'){
+		}elseif($acao == 'novoCadastro'){
+            $controller->novoCadastro();
+        }elseif($acao == 'autenticarUsuario'){
 			$controller->autenticarUsuario();
 		}elseif($acao == 'logout'){
 			$controller->logout();
