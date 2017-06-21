@@ -36,6 +36,17 @@ Class UsuarioController
         }
     }
 
+    public function novoCadastro()
+    {
+        $dados = $_POST;
+        $dados['grupo'] = "1";
+        $dados['ativo'] = "0";
+        if (Usuario::adicionaUsuario($dados)) {
+            $_SESSION['success'] = "<strong style='color: #0f0f0f'>Usuario criado com sucesso!<br>Aguarde seu cadastro ser ativado por algum Administrador</strong>";
+            View::make('home/index');
+        }
+    }
+
     public function exibir()
     {
         $usuarios = Usuario::buscarTodos();
@@ -69,6 +80,7 @@ Class UsuarioController
             $usuario = Usuario::buscarPorId($_GET['id']);
             $usuario->remover();
         });
+        $_SESSION['danger'] = "<strong style='color: #0f0f0f'>Usuário removido com sucesso</strong>";
         View::make('usuario/exibir', array('usuarios' => Usuario::buscarTodos()));
     }
 
@@ -78,7 +90,7 @@ Class UsuarioController
         $usuario = Usuario::buscaUsuario($dados);
         if (isset($usuario)){
             if($usuario->ativo == 0){
-                $_SESSION['warning'] = "<strong style='color: #0f0f0f'>Usuario não ativo!<br>Aguarde um Administrador ativar seu cadastro.</strong>";
+                $_SESSION['warning'] = "<strong style='color: #0f0f0f'>Usuário não ativo!<br>Aguarde algum Administrador ativar seu cadastro.</strong>";
                 View::make('home/index');
                 die();
             }else{
@@ -86,6 +98,7 @@ Class UsuarioController
             $_SESSION['usuario_logado'] = $usuario->nome;
             $_SESSION['grupo'] = $usuario->grupo;
             $_SESSION['login'] = $usuario->login;
+            $_SESSION['success'] = "<strong style='color: #0f0f0f'>Bem Vindo</strong>";
             View::make('home/index');
             }
         }else{
