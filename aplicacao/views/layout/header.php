@@ -6,18 +6,46 @@
 
     <title>Sistema Teste</title>
 
-    <link rel="stylesheet" href="dist/css/bootstrap.min.css">
+<!--    File Upload-->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link href="dist/fileUpload/css/fileinput.min.css" media="all" rel="stylesheet" type="text/css" />
+    <script src="dist/fileUpload/js/jquery.min.js"></script>
+    <!-- piexif.min.js is only needed if you wish to resize images before upload to restore exif data.
+         This must be loaded before fileinput.min.js -->
+    <script src="dist/fileUpload/js/plugins/piexif.min.js" type="text/javascript"></script>
+    <!-- sortable.min.js is only needed if you wish to sort / rearrange files in initial preview.
+         This must be loaded before fileinput.min.js -->
+    <script src="dist/fileUpload/js/plugins/sortable.min.js" type="text/javascript"></script>
+    <!-- purify.min.js is only needed if you wish to purify HTML content in your preview for HTML files.
+         This must be loaded before fileinput.min.js -->
+    <script src="dist/fileUpload/js/plugins/purify.min.js" type="text/javascript"></script>
+    <!-- the main fileinput plugin file -->
+    <script src="dist/fileUpload/js/fileinput.min.js"></script>
+    <!-- bootstrap.js below is needed if you wish to zoom and view file content
+         in a larger detailed modal dialog -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" type="text/javascript"></script>
+    <!-- optionally if you need a theme like font awesome theme you can include
+        it as mentioned below -->
+    <script src="dist/fileUpload/themes/fa/theme.js"></script>
+    <!-- optionally if you need translation for your language then include
+        locale file as mentioned below -->
+    <script src="dist/fileUpload/js/locales/pt-BR.js"></script>
+
+
+<!---->
+
+<!--    <link rel="stylesheet" href="dist/css/bootstrap.min.css">-->
     <link rel="stylesheet" href="dist/css/bootstrap-theme.min.css">
-    <link rel="stylesheet" href="dist/css/image_upload.css">
+    <link rel="stylesheet" href="dist/css/fileUpload.css">
     <link rel="stylesheet" href="dist/css/main.css">
-    <script src="dist/js/jquery-latest.min.js" type="text/javascript"></script>
+<!--    <script src="dist/js/jquery-latest.min.js" type="text/javascript"></script>-->
     <script src="dist/js/script.js"></script>
     <script src="dist/js/alert.js"></script>
-    <script src="dist/js/image_upload.js"></script>
-    <script src="dist/js/bootstrap.min.js"></script>
+<!--    <script src="dist/js/fileUpload.js"></script>-->
+<!--    <script src="dist/js/bootstrap.min.js"></script>-->
 
     <link rel="stylesheet" href="dist/css/jquery-ui.css">
-    <script src="dist/js/jquery-1.10.2.js"></script>
+<!--    <script src="dist/js/jquery-1.10.2.js"></script>-->
     <script src="dist/js/jquery-ui.js"></script>
 
 <!--    <script type="text/javascript" src="jquery.js"></script>-->
