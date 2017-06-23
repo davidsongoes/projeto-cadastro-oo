@@ -19,7 +19,7 @@ use models\Efetivo;
                 </ol>
                 <h1>Detalhes do Militar</h1>
                 <div class="row">
-                    <img src="<?php echo Efetivo::verificaFoto($efetivo->posto_graduacao, $efetivo->nome_guerra)?>"
+                    <img src="<?php echo Efetivo::verificaFoto($efetivo->id)?>"
                          style="margin-left: 15px" class="img-thumbnail" width="175" height="225">
                 </div>
                 <div class="row">
