@@ -20,7 +20,7 @@ $foto = Efetivo::verificaFoto($efetivo->posto_graduacao, $efetivo->nome_guerra);
                         - <?php echo (!empty($efetivo->id)) ? Efetivo::buscaPostoGraduacao($efetivo->posto_graduacao) . ' ' . utf8_encode($efetivo->nome_guerra) : "Novo Cadastro"; ?></li>
                 </ol>
                 <h1>Editar Dados</h1>
-                <form class="form-horizontal" role="form" method="post" action="index.php?c=efetivo&acao=editarMilitar">
+                <form class="form-horizontal" role="form" method="post" action="index.php?c=efetivo&acao=editarMilitar" enctype="multipart/form-data">
                     <input type="hidden" name="id" value="<?php echo $efetivo->id ?>"/>
                     <div class="row">
                         <div class="col-lg-6">
@@ -176,8 +176,8 @@ $foto = Efetivo::verificaFoto($efetivo->posto_graduacao, $efetivo->nome_guerra);
                             <!-- markup -->
                             <!-- note: your server code `avatar_upload.php` will receive `$_FILES['avatar']` on form submission -->
                             <!-- the avatar markup -->
-                            <form class="form form-vertical" action="avatar_upload.php" method="post"
-                                  enctype="multipart/form-data">
+<!--                            <form class="form form-vertical" action="index.php?c=efetivo&acao=salvaFoto" method="post"-->
+<!--                                  >-->
                                 <div class="row">
                                     <div class="col-sm-4">
                                         <div class="kv-avatar center-block text-center" style="width:200px">
@@ -189,7 +189,7 @@ $foto = Efetivo::verificaFoto($efetivo->posto_graduacao, $efetivo->nome_guerra);
                                         </div>
                                     </div>
                                 </div>
-                            </form>
+<!--                            </form>-->
                             <div id="kv-avatar-errors-1" class="center-block" style="width:800px;display:none"></div>
                         </div>
 
