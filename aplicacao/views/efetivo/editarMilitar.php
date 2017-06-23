@@ -4,7 +4,7 @@ use components\Helper;
 use models\Efetivo;
 use models\base\AbstractModel;
 
-$foto = Efetivo::verificaFoto($efetivo->posto_graduacao, $efetivo->nome_guerra);
+$foto = Efetivo::verificaFoto($efetivo->id);
 ?>
     <div class="row">
         <div class="col-lg-2">
