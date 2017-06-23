@@ -187,10 +187,10 @@ class Efetivo extends EfetivoDAO
         return isset($efetivo) ? $efetivo : NULL;
     }
 
-    public static function verificaFoto($posto_graduacao, $nome_guerra)
+    public static function verificaFoto($id)
     {
-        if (isset($posto_graduacao) AND ($nome_guerra)) {
-            $nome_arquivo = self::buscaPostoGraduacao($posto_graduacao) . '_' . utf8_encode($nome_guerra) . '.jpg';
+        if (isset($id)) {
+            $nome_arquivo = $id . '.jpg';
             if (file_exists("/var/www/html/fotos/$nome_arquivo")) {
                 return "../../../fotos/$nome_arquivo";
             } else {
