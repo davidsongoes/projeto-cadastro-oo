@@ -88,6 +88,7 @@ class EfetivoController
     {
         {
             $dados = $_POST;
+            Efetivo::salvaFoto($dados['id']);
             if (Efetivo::editarMilitar($dados)) {
                 $efetivos = Efetivo::buscarMilitares();
                 $_SESSION['warning'] = "<strong style='color: #0f0f0f'>Militar editado com sucesso!</strong>";
@@ -95,5 +96,7 @@ class EfetivoController
             }
         }
     }
+
+
 }
 
