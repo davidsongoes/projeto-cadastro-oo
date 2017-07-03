@@ -20,7 +20,7 @@ class Efetivo extends EfetivoDAO
     {
         AbstractModel::verificaDados($dados);
         try {
-            AbstractModel::executar(self::QUERY_INSERT, array(
+            $lastId = AbstractModel::executar(self::QUERY_INSERT, array(
                 ':saram' => $dados['saram'],
                 ':id_quadro' => $dados['quadro'],
                 ':id_posto_grad' => $dados['posto_graduacao'],
@@ -36,7 +36,11 @@ class Efetivo extends EfetivoDAO
                 ':email' => $dados['email'],
                 ':antiguidade_turma' => $dados['antiguidade_turma'],
             ));
-            return true;
+            $response = [
+                'lastId' => $lastId,
+                'true' => true
+            ];
+            return $response;
         } catch (\PDOException  $e) {
             echo 'Error: ' . $e->getMessage();
         }
@@ -197,7 +201,22 @@ class Efetivo extends EfetivoDAO
                 return '../../../fotos/sem_foto.jpg';
             }
         }
+    }
 
+    public static function validaFile($file)
+    {
+
+        if (empty($file["avatar-1"]['name'])) {
+            $file = ["avatar-1" => [
+                "name" => "sem_foto.jpg",
+                "type" => "image/jpeg",
+                "tmp_name" => "/var/www/html/fotos/sem_foto",
+                "error" => 0,
+                "size" => 20008
+            ]
+            ];
+            $_FILES = $file;
+        }
     }
 
     public static function salvaFoto($id)
@@ -217,8 +236,10 @@ class Efetivo extends EfetivoDAO
         $_UP['erros'][3] = 'O upload do arquivo foi feito parcialmente';
         $_UP['erros'][4] = 'Não foi feito o upload do arquivo';
 // Verifica se houve algum erro com o upload. Se sim, exibe a mensagem do erro
+//        var_dump($_FILES['avatar-1']['error'] != 0);exit;
         if ($_FILES['avatar-1']['error'] != 0) {
-            die("Não foi possível fazer o upload, erro:" . $_UP['erros'][$_FILES['arquivo']['error']]);
+            $_SESSION['success'] = "<strong style='color: #0f0f0f'>Escolha uma foto!</strong>";
+//            die("Não foi possível fazer o upload, erro:" . $_UP['erros'][$_FILES['arquivo']['error']]);
             exit; // Para a execução do script
         }
 // Caso script chegue a esse ponto, não houve erro com o upload e o PHP pode continuar
@@ -246,11 +267,10 @@ class Efetivo extends EfetivoDAO
 // Depois verifica se é possível mover o arquivo para a pasta escolhida
         if (move_uploaded_file($_FILES['avatar-1']['tmp_name'], $_UP['pasta'] . $nome_final)) {
             // Upload efetuado com sucesso, exibe uma mensagem e um link para o arquivo
-            echo "Upload efetuado com sucesso!";
-            echo '<a href="' . $_UP['pasta'] . $nome_final . '">Clique aqui para acessar o arquivo</a>';
+            $_SESSION['success'] = "<strong style='color: #0f0f0f'>Envio/Edição da foto feito com sucesso!</strong>";
         } else {
             // Não foi possível fazer o upload, provavelmente a pasta está incorreta
-            echo "Não foi possível enviar o arquivo, tente novamente";
+//            $_SESSION['danger'] = "<strong style='color: #0f0f0f'>Não foi possível enviar o arquivo, tente novamente!</strong>";
         }
     }
 }
