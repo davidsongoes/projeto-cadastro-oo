@@ -41,7 +41,6 @@
 <!--    <script src="dist/js/jquery-latest.min.js" type="text/javascript"></script>-->
     <script src="dist/js/script.js"></script>
     <script src="dist/js/alert.js"></script>
-<!--    <script src="dist/js/fileUpload.js"></script>-->
 <!--    <script src="dist/js/bootstrap.min.js"></script>-->
 
     <link rel="stylesheet" href="dist/css/jquery-ui.css">
@@ -66,7 +65,7 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
                 <?php if(isset($_SESSION['usuario_logado'])): ?>
-                    <li><a href="">Olá, <?php echo $_SESSION['usuario_logado'] ?></a></li>
+                    <li><a href="index.php?c=usuario&acao=meusDados">Olá, <?php echo $_SESSION['usuario_logado'] ?></a></li>
                     <li><a href="index.php?c=usuario&acao=logout">Sair</a></li>
                 <?php endif; ?>
             </ul>
