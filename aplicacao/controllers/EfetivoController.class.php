@@ -27,9 +27,15 @@ class EfetivoController
     public function novoMilitar()
     {
         $dados = $_POST;
-        if (Efetivo::adicionaMilitar($dados)) {
+        $response = Efetivo::adicionaMilitar($dados);
+        if ($response['true'] === true) {
+            Efetivo::salvaFoto($response['lastId']);
             $efetivos = Efetivo::buscarMilitares();
             $_SESSION['success'] = "<strong style='color: #0f0f0f'>Militar inserido com sucesso!</strong>";
+            View::make('efetivo/listarMilitares', array('efetivos' => $efetivos));
+        }else{
+            $efetivos = Efetivo::buscarMilitares();
+            $_SESSION['danger'] = "<strong style='color: #0f0f0f'>Erro ao inserir Militar!</strong>";
             View::make('efetivo/listarMilitares', array('efetivos' => $efetivos));
         }
     }
@@ -44,23 +50,6 @@ class EfetivoController
     {
         $efetivos = Efetivo::buscarMilitares();
         View::make('efetivo/listarMilitares', array('efetivos' => $efetivos));
-//        if ($_SESSION['grupo'] == 4) {
-//            $chamados = Chamado::buscaTodosPorSolucionador('2');
-//            View::make('chamado/listaChamado', array('chamados' => $chamados));
-//        } elseif ($_SESSION['grupo'] == 5) {
-//            $chamados = Chamado::buscaTodosPorSolucionador('3');
-//            View::make('chamado/listaChamado', array('chamados' => $chamados));
-//        } elseif ($_SESSION['grupo'] == 6) {
-//            $chamados = Chamado::buscaTodosPorSolucionador('4');
-//            View::make('chamado/listaChamado', array('chamados' => $chamados));
-//        } elseif ($_SESSION['grupo'] == '2') {
-//            $efetivos = Efetivo::buscarMilitares();
-//            View::make('efetivo/listarMilitares', array('efetivos' => $efetivos));
-//        } else {
-//            $chamados = Chamado::buscarTodos();
-//            View::make('chamado/listaChamado', array('chamados' => $chamados));
-//        }
-
     }
 
     public function excluirMilitar()
@@ -88,8 +77,10 @@ class EfetivoController
     {
         {
             $dados = $_POST;
-            Efetivo::salvaFoto($dados['id']);
+            $files = $_FILES;
             if (Efetivo::editarMilitar($dados)) {
+                Efetivo::validaFile($files);
+                Efetivo::salvaFoto($dados['id']);
                 $efetivos = Efetivo::buscarMilitares();
                 $_SESSION['warning'] = "<strong style='color: #0f0f0f'>Militar editado com sucesso!</strong>";
                 View::make('efetivo/listarMilitares', array('efetivos' => $efetivos));
