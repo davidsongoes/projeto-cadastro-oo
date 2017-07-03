@@ -2,7 +2,7 @@
 include(__DIR__ . '/../layout/header.php');
 use components\Helper;
 use models\Efetivo;
-
+$foto = '../../../fotos/sem_foto.jpg';
 ?>
     <div class="row">
     <div class="col-lg-2">
@@ -18,10 +18,10 @@ use models\Efetivo;
     Preencha os campos corretamente.
     <div class="container-fluid margem_direita">
         <hr/>
-        <form class="form-horizontal" role="form" method="post" action="index.php?c=efetivo&acao=novoMilitar">
+        <form class="form-horizontal" role="form" method="post" action="index.php?c=efetivo&acao=novoMilitar" enctype="multipart/form-data">
             <!-- dados pessoais do militar -->
             <div class="row">
-                <div class="col-lg-6">
+                <div class="col-lg-5">
                     <div class="form-group">
                         <label for="saram" class="col-sm-2 control-label teste">Saram</label>
                         <div class="col-sm-6">
@@ -31,7 +31,7 @@ use models\Efetivo;
                     </div>
 
                     <div class="form-group">
-                        <label for="post_grad_id" class="col-sm-2 control-label">Posto/Graduação</label>
+                        <label for="post_grad_id" class="col-sm-2 control-label">Posto<br>Graduação</label>
                         <div class="col-sm-6">
                             <select type="text" class="form-control" id="posto_graduacao" name="posto_graduacao"
                                     required="required">
@@ -148,9 +148,59 @@ use models\Efetivo;
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-6">
-                    profile image
+                <div class="col-lg-7">
+                    <strong>Foto do Militar</strong>
+                    <br>
+                    <!-- markup -->
+                    <!-- note: your server code `avatar_upload.php` will receive `$_FILES['avatar']` on form submission -->
+                    <!-- the avatar markup -->
+                    <!--                            <form class="form form-vertical" action="index.php?c=efetivo&acao=salvaFoto" method="post"-->
+                    <!--                                  >-->
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <div class="kv-avatar center-block text-center" style="width:200px">
+                                <br>
+                                <input id="avatar-1" name="avatar-1" type="file" class="file-loading" required>
+                                <div class="help-block">
+                                    <small>Selecione um arquivo < 2000 KB</small>
+                                    <small>Extensões: jpg, png ou gif.</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--                            </form>-->
+                    <div id="kv-avatar-errors-1" class="center-block" style="width:800px;display:none"></div>
                 </div>
+
+                <!-- the fileinput plugin initialization -->
+                <script>
+                    var foto = "<?=$foto?>";
+                    //                            var btnCust = '<button type="button" class="btn btn-default" title="Add picture tags" ' +
+                    //                                'onclick="alert()">' +
+                    //                                '<i class="glyphicon glyphicon-tag"></i>' +
+                    //                                '</button>';
+                    $("#avatar-1").fileinput({
+                        overwriteInitial: true,
+                        maxFileSize: 2000,
+                        showClose: false,
+                        showCaption: false,
+                        browseLabel: '',
+                        removeLabel: '',
+                        browseIcon: '<i class="glyphicon glyphicon-folder-open"></i>',
+                        removeIcon: '<i class="glyphicon glyphicon-remove"></i>',
+                        removeTitle: 'Cancel or reset changes',
+                        elErrorContainer: '#kv-avatar-errors-1',
+                        msgErrorClass: 'alert alert-block alert-danger',
+                        defaultPreviewContent: '<img id="foto" style="width:160px">',
+                        layoutTemplates: {main2: '{preview} ' + ' {remove} {browse}'},
+                        allowedFileExtensions: ["jpg", "png", "gif"]
+                    });
+                    $("#foto").attr({
+                        src: foto,
+                        title: "Efetivo",
+                        alt: "Foto Militar"
+                    });
+                </script>
             </div>
             <div class="row">
                 <div class="form-group">
