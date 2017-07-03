@@ -60,6 +60,8 @@ abstract class AbstractModel
 
         $stmt = PDOUtil::getInstance()->obterConexao()->prepare($sql);
         $stmt->execute($dados);
+        $lastId = PDOUtil::getInstance()->obterConexao()->lastInsertId();
+        return $lastId;
     }
 
     static public function queryAll($sql, $dados)
