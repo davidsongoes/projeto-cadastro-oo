@@ -18,6 +18,7 @@ use components\Helper;
         ?>
         <div class="panel panel-default ">
             <div class="panel-body">
+                <img src="dist/images/cone_p.jpeg" alt=""/>
                 <h3><b>SISCONE</b><br>Sistema de Controle de Efetivo</h3>
                 <hr/>
                 <form class="form-horizontal" role="form" method="post"
@@ -51,38 +52,65 @@ use components\Helper;
     </div>
 </div>
 
-
 <!--INICIO DA MODAL SENHA-->
 <div class="modal fade" id="myModalSenha" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                            aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title">Recuperar Senha</h4>
-            </div>
-            <div class="modal-body">
-                <form class="form-horizontal margem_direita" role="form" method="post"
-                      action="index.php?c=usuario&acao=recuperarSenha">
-                    <div class="form-group">
-                        <label for="email" class="col-sm-3 control-label">Email</label>
-                        <div class="col-sm-9">
-                            <input type="email" class="form-control" id="email" placeholder="Email cadastrado"
-                                   name="email" required="required">
-                        </div>
+<div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title">Perdeu a senha?</h4>
+        </div>
+        <div class="modal-body">
+            <form class="form-horizontal margem_direita" role="form" method="post"
+                  action="index.php?c=usuario&acao=recuperarSenha">
+                <div class="form-group">
+                    <div class="col-sm-12">
+                        <h4 style="text-align: justify">Entre em contato no ramal xxxx e solicite a reinicialização da senha do SISCONE.</h4>
                     </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal"><span
-                            class="glyphicon glyphicon-remove"></span> Fechar
-                </button>
-                <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-thumbs-up"></span> Enviar
-                </button>
-            </div>
-            </form>
-        </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
+                </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal"><span
+                        class="glyphicon glyphicon-remove"></span> Fechar
+            </button>
+        </div>
+        </form>
+    </div><!-- /.modal-content -->
+</div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
+
+
+<!--<div class="modal fade" id="myModalSenha" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">-->
+<!--    <div class="modal-dialog">-->
+<!--        <div class="modal-content">-->
+<!--            <div class="modal-header">-->
+<!--                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span-->
+<!--                            aria-hidden="true">&times;</span></button>-->
+<!--                <h4 class="modal-title">Recuperar Senha</h4>-->
+<!--            </div>-->
+<!--            <div class="modal-body">-->
+<!--                <form class="form-horizontal margem_direita" role="form" method="post"-->
+<!--                      action="index.php?c=usuario&acao=recuperarSenha">-->
+<!--                    <div class="form-group">-->
+<!--                        <label for="email" class="col-sm-3 control-label">Email</label>-->
+<!--                        <div class="col-sm-9">-->
+<!--                            <input type="email" class="form-control" id="email" placeholder="Email cadastrado"-->
+<!--                                   name="email" required="required">-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--            </div>-->
+<!--            <div class="modal-footer">-->
+<!--                <button type="button" class="btn btn-default" data-dismiss="modal"><span-->
+<!--                            class="glyphicon glyphicon-remove"></span> Fechar-->
+<!--                </button>-->
+<!--                <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-thumbs-up"></span> Enviar-->
+<!--                </button>-->
+<!--            </div>-->
+<!--            </form>-->
+<!--        </div><!-- /.modal-content -->
+<!--    </div><!-- /.modal-dialog -->
+<!--</div><!-- /.modal -->
 
 <!--INICIO DA MODAL CADASTRO-->
 <div class="modal fade" id="myModalCadastrar" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
