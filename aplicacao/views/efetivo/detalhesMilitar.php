@@ -8,8 +8,8 @@ use models\Efetivo;
         <div class="col-lg-2">
             <?php include(__DIR__ . '/../layout/menu.php'); ?>
         </div>
+        <div class="container-fluid margem_direita">
         <div class="col-lg-10">
-            <div class="container-fluid margem_direita">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="index.php">Home</a></li>
                     <li class="breadcrumb-item"><a href="index.php?c=efetivo&acao=listarMilitares">Lista do Efetivo</a>
