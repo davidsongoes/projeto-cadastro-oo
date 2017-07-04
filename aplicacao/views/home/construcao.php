@@ -6,8 +6,8 @@ include(__DIR__ . '/../layout/header.php');
         <?php  include(__DIR__ . '/../layout/menu.php');?>
     </div>
     <div class="col-lg-9">
-        <h1>Obrigado pela sua curiosidade, esta funcionalidade esta em construção, volte mais tarde</h1>
-        <h2>Caso seja o 3s SIN Sergio, não encha o saco !</h2>
+        <h1>Teste</h1>
+        <h2>Sucesso</h2>
         <img class="construcao" src="../dist/images/igiveup.gif" alt=""/>
         </div>
     </div>
