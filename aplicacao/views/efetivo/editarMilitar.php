@@ -10,8 +10,8 @@ $foto = Efetivo::verificaFoto($efetivo->id);
         <div class="col-lg-2">
             <?php include(__DIR__ . '/../layout/menu.php'); ?>
         </div>
-        <div class="col-lg-10">
-            <div class="container-fluid margem_direita">
+        <div class="container-fluid margem_direita">
+            <div class="col-lg-10">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="index.php">Home</a></li>
                     <li class="breadcrumb-item"><a href="index.php?c=efetivo&acao=listarMilitares">Lista do Efetivo</a>
@@ -20,12 +20,13 @@ $foto = Efetivo::verificaFoto($efetivo->id);
                         - <?php echo (!empty($efetivo->id)) ? Efetivo::buscaPostoGraduacao($efetivo->posto_graduacao) . ' ' . utf8_encode($efetivo->nome_guerra) : "Novo Cadastro"; ?></li>
                 </ol>
                 <h1>Editar Dados</h1>
-                <form class="form-horizontal" role="form" method="post" action="index.php?c=efetivo&acao=editarMilitar" enctype="multipart/form-data">
+                <form class="form-horizontal" role="form" method="post" action="index.php?c=efetivo&acao=editarMilitar"
+                      enctype="multipart/form-data">
                     <input type="hidden" name="id" value="<?php echo $efetivo->id ?>"/>
                     <div class="row">
                         <div class="col-lg-5">
                             <div class="form-group">
-                                <label for="saram" class="col-sm-2 control-label">Saram:</label>
+                                <label for="saram" class="col-sm-2 control-label">Saram</label>
                                 <div class="col-sm-5">
                                     <input type="text" class="form-control" id="saram" placeholder="Saram" name="saram"
                                            required="required" value="<?= $efetivo->saram ?>">
@@ -71,7 +72,7 @@ $foto = Efetivo::verificaFoto($efetivo->id);
                             </div>
 
                             <div class="form-group">
-                                <label for="nome_completo" class="col-sm-2 control-label">Nome Completo:</label>
+                                <label for="nome_completo" class="col-sm-2 control-label">Nome Completo</label>
                                 <div class="col-sm-5">
                                     <input type="text" class="form-control" id="nome_completo"
                                            placeholder="Nome Completo"
@@ -81,7 +82,7 @@ $foto = Efetivo::verificaFoto($efetivo->id);
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="nome_guerra" class="col-sm-2 control-label">Nome de Guerra:</label>
+                                <label for="nome_guerra" class="col-sm-2 control-label">Nome de Guerra</label>
                                 <div class="col-sm-5">
                                     <input type="text" class="form-control" id="nome_guerra"
                                            placeholder="Nome de Guerra"
@@ -102,7 +103,7 @@ $foto = Efetivo::verificaFoto($efetivo->id);
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="data_nascimento" class="col-sm-2 control-label">Data Nascimento:</label>
+                                <label for="data_nascimento" class="col-sm-2 control-label">Data Nascimento</label>
                                 <div class="col-sm-5">
                                     <input type="text" class="form-control datepicker" id="data_nascimento"
                                            placeholder="data_nascimento" name="data_nascimento" required="required"
@@ -111,7 +112,7 @@ $foto = Efetivo::verificaFoto($efetivo->id);
                             </div>
                             <div class="form-group">
                                 <label for="data_ultima_promocao" class="col-sm-2 control-label">Data Ultima
-                                    Promoção:</label>
+                                    Promoção</label>
                                 <div class="col-sm-5">
                                     <input type="text" class="form-control datepicker" id="data_ultima_promocao"
                                            placeholder="data_ultima_promocao" name="data_ultima_promocao"
@@ -132,14 +133,14 @@ $foto = Efetivo::verificaFoto($efetivo->id);
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="ramal" class="col-sm-2 control-label">Ramal:</label>
+                                <label for="ramal" class="col-sm-2 control-label">Ramal</label>
                                 <div class="col-sm-5">
                                     <input type="text" class="form-control" id="ramal" placeholder="Ramal" name="ramal"
                                            required="required" value="<?php echo $efetivo->ramal ?>">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="rtcaer" class="col-sm-2 control-label">RTCAER:</label>
+                                <label for="rtcaer" class="col-sm-2 control-label">RTCAER</label>
                                 <div class="col-sm-5">
                                     <input type="text" class="form-control" id="rtcaer" placeholder="RTCAER"
                                            name="rtcaer"
@@ -161,14 +162,7 @@ $foto = Efetivo::verificaFoto($efetivo->id);
                                            value="<?php echo $efetivo->antiguidade_turma ?>">
                                 </div>
                             </div>
-                            <div class="form-group">
-                                <div class="col-sm-offset-3">
-                                    <button type="submit" class="btn btn-warning"><span
-                                                class="glyphicon glyphicon-pencil"></span>
-                                        Editar
-                                    </button>
-                                </div>
-                            </div>
+
                         </div>
                         <div class="col-lg-7">
                             <strong>Foto do Militar</strong>
@@ -176,31 +170,30 @@ $foto = Efetivo::verificaFoto($efetivo->id);
                             <!-- markup -->
                             <!-- note: your server code `avatar_upload.php` will receive `$_FILES['avatar']` on form submission -->
                             <!-- the avatar markup -->
-<!--                            <form class="form form-vertical" action="index.php?c=efetivo&acao=salvaFoto" method="post"-->
-<!--                                  >-->
-                                <div class="row">
-                                    <div class="col-sm-4">
-                                        <div class="kv-avatar center-block text-center" style="width:200px">
-                                            <br>
-                                            <input id="avatar-1" name="avatar-1" type="file" class="file-loading" value="<?php echo Efetivo::verificaFoto($efetivo->id); ?>">
-                                            <div class="help-block">
-                                                <small>Selecione um arquivo < 2000 KB</small>
-                                                <small>Extensões: jpg, png ou gif.</small>
-                                            </div>
+                            <!--                            <form class="form form-vertical" action="index.php?c=efetivo&acao=salvaFoto" method="post"-->
+                            <!--                                  >-->
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <div class="kv-avatar center-block text-center" style="width:200px">
+                                        <br>
+                                        <input id="avatar-1" name="avatar-1" type="file" class="file-loading"
+                                               value="<?php echo Efetivo::verificaFoto($efetivo->id); ?>">
+                                        <div class="help-block">
+                                            <small>Selecione um arquivo < 2000 KB</small>
+                                            <small>Extensões: jpg, png ou gif.</small>
                                         </div>
                                     </div>
                                 </div>
-<!--                            </form>-->
+                            </div>
                             <div id="kv-avatar-errors-1" class="center-block" style="width:800px;display:none"></div>
                         </div>
-
                         <!-- the fileinput plugin initialization -->
                         <script>
                             var foto = "<?=$foto?>";
-//                            var btnCust = '<button type="button" class="btn btn-default" title="Add picture tags" ' +
-//                                'onclick="alert()">' +
-//                                '<i class="glyphicon glyphicon-tag"></i>' +
-//                                '</button>';
+                            //                            var btnCust = '<button type="button" class="btn btn-default" title="Add picture tags" ' +
+                            //                                'onclick="alert()">' +
+                            //                                '<i class="glyphicon glyphicon-tag"></i>' +
+                            //                                '</button>';
                             $("#avatar-1").fileinput({
                                 overwriteInitial: true,
                                 maxFileSize: 2000,
@@ -224,6 +217,16 @@ $foto = Efetivo::verificaFoto($efetivo->id);
                             });
                         </script>
                     </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="form-group">
+            <div class="col-sm-offset-5 col-sm-10">
+                <button type="submit" class="btn btn-warning"><span
+                            class="glyphicon glyphicon-pencil"></span>
+                    Editar
+                </button>
             </div>
         </div>
     </div>
