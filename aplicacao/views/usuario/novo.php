@@ -11,8 +11,8 @@ use components\Helper;
             <div class="col-lg-10">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="index.php">Home</a></li>
-                    <li class="breadcrumb-item"><a href="index.php?c=usuario&acao=exibir">Lista de Usuários</a>
-                    </li>
+<!--                    <li class="breadcrumb-item"><a href="index.php?c=usuario&acao=exibir">Lista de Usuários</a>-->
+<!--                    </li>-->
                     <li class="breadcrumb-item active">Novo Usuário
                         - <?php echo (!empty($usuario->id)) ? strtolower($usuario->login) : "Novo Cadastro"; ?></li>
                 </ol>
