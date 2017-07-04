@@ -22,7 +22,7 @@ use components\Helper;
                     <div class="row">
                         <div class="col-lg-6">
                             <div class="form-group">
-                                <label for="saram" class="col-sm-2 control-label">Saram:</label>
+                                <label for="saram" class="col-sm-2 control-label">Saram</label>
                                 <div class="col-sm-10">
                                     <input type="number" class="form-control" id="saram" placeholder="Saram"
                                            name="saram" required="required" value="<?= $usuario->saram ?>">
@@ -36,7 +36,7 @@ use components\Helper;
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="nome" class="col-sm-2 control-label">Nome Completo:</label>
+                                <label for="nome" class="col-sm-2 control-label">Nome Completo</label>
                                 <div class="col-sm-10">
                                     <input type="text" class="form-control" id="nome" placeholder="nome" name="nome"
                                            required="required" value="<?php echo $usuario->nome ?>">
