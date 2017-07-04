@@ -160,7 +160,7 @@ $foto = '../../../fotos/sem_foto.jpg';
                         <div class="col-sm-4">
                             <div class="kv-avatar center-block text-center" style="width:200px">
                                 <br>
-                                <input id="avatar-1" name="avatar-1" type="file" class="file-loading" required>
+                                <input id="avatar-1" name="avatar-1" type="file" class="file-loading">
                                 <div class="help-block">
                                     <small>Selecione um arquivo < 2000 KB</small>
                                     <small>Extensões: jpg, png ou gif.</small>
