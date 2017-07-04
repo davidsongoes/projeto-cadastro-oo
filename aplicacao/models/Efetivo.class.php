@@ -237,23 +237,23 @@ class Efetivo extends EfetivoDAO
         $_UP['erros'][4] = 'Não foi feito o upload do arquivo';
 // Verifica se houve algum erro com o upload. Se sim, exibe a mensagem do erro
 //        var_dump($_FILES['avatar-1']['error'] != 0);exit;
-        if ($_FILES['avatar-1']['error'] != 0) {
-            $_SESSION['success'] = "<strong style='color: #0f0f0f'>Escolha uma foto!</strong>";
-//            die("Não foi possível fazer o upload, erro:" . $_UP['erros'][$_FILES['arquivo']['error']]);
-            exit; // Para a execução do script
-        }
-// Caso script chegue a esse ponto, não houve erro com o upload e o PHP pode continuar
-// Faz a verificação da extensão do arquivo
-        $extensao = strtolower(end(explode('.', $_FILES['avatar-1']['name'])));
-        if (array_search($extensao, $_UP['extensoes']) === false) {
-            echo "Por favor, envie arquivos com as seguintes extensões: jpg, png ou gif";
-            exit;
-        }
-// Faz a verificação do tamanho do arquivo
-        if ($_UP['tamanho'] < $_FILES['avatar-1']['size']) {
-            echo "O arquivo enviado é muito grande, envie arquivos de até 2Mb.";
-            exit;
-        }
+//        if ($_FILES['avatar-1']['error'] != 0) {
+//            $_SESSION['success'] = "<strong style='color: #0f0f0f'>Escolha uma foto!</strong>";
+////            die("Não foi possível fazer o upload, erro:" . $_UP['erros'][$_FILES['arquivo']['error']]);
+//            exit; // Para a execução do script
+//        }
+//// Caso script chegue a esse ponto, não houve erro com o upload e o PHP pode continuar
+//// Faz a verificação da extensão do arquivo
+//        $extensao = strtolower(end(explode('.', $_FILES['avatar-1']['name'])));
+//        if (array_search($extensao, $_UP['extensoes']) === false) {
+//            echo "Por favor, envie arquivos com as seguintes extensões: jpg, png ou gif";
+//            exit;
+//        }
+//// Faz a verificação do tamanho do arquivo
+//        if ($_UP['tamanho'] < $_FILES['avatar-1']['size']) {
+//            echo "O arquivo enviado é muito grande, envie arquivos de até 2Mb.";
+//            exit;
+//        }
 // O arquivo passou em todas as verificações, hora de tentar movê-lo para a pasta
 // Primeiro verifica se deve trocar o nome do arquivo
         if ($_UP['renomeia'] == true) {
