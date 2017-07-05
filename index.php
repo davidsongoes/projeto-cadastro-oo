@@ -7,12 +7,8 @@ function roteamento()
 	$c = $_REQUEST['c'];
 	$acao = $_REQUEST['acao'];
 
-	if($c == 'autor'){
-		executarAutorController($acao);
-	}elseif($c == 'post'){
+	if($c == 'post'){
 		executarPostController($acao);
-	}elseif($c == 'chamado'){
-		executarChamadoController($acao);
 	}elseif ($c == 'efetivo'){
 	    executarEfetivoController($acao);
     }elseif($c =='usuario'){
@@ -59,17 +55,17 @@ function executarUsuarioController($acao){
 		$controller->index();
 	}
 }
-function executarAutorController($acao){
-	$controller = new \controllers\AutorController();
-	if($acao == 'exibir'){
-		$controller->exibir();
-	}elseif($acao == 'remover'){
-		$controller->remover();
-	}
-	else{
-		$controller->index();
-	}
-}
+//function executarAutorController($acao){
+//	$controller = new \controllers\AutorController();
+//	if($acao == 'exibir'){
+//		$controller->exibir();
+//	}elseif($acao == 'remover'){
+//		$controller->remover();
+//	}
+//	else{
+//		$controller->index();
+//	}
+//}
 function executarPostController($acao){
 
 	$controller = new \controllers\PostController();
@@ -79,33 +75,33 @@ function executarPostController($acao){
 		$controller->index();
 	}
 }
-function executarChamadoController($acao){
-	$controller = new \controllers\ChamadoController();
-	if($acao == 'novoChamado'){
-		$controller->novo();
-	}elseif($acao == 'listaChamados'){
-		$controller->listarChamados();
-	}elseif($acao == 'resolverChamado'){
-		$controller->resolverChamado();
-	}elseif($acao == 'fecharChamado'){
-		$controller->fecharChamado();
-	}elseif($acao == 'atualizarChamado'){
-		$controller->atualizarChamado();
-	}elseif($acao == 'tratarChamado'){
-		$controller->tratarChamado();
-	}elseif($acao == 'meusChamados'){
-		$controller->meusChamados();
-	}elseif($acao == 'gerarEstatistica'){
-		$controller->gerarEstatistica();
-	}elseif($acao == 'detalheMeuChamado'){
-		$controller->detalheMeuChamado();
-	}elseif($acao =='adicionaSolucionador'){
-		$controller->adicionaSolucionador();
-	}
-	else{
-		$controller->index();
-	}
-}
+//function executarChamadoController($acao){
+//	$controller = new \controllers\ChamadoController();
+//	if($acao == 'novoChamado'){
+//		$controller->novo();
+//	}elseif($acao == 'listaChamados'){
+//		$controller->listarChamados();
+//	}elseif($acao == 'resolverChamado'){
+//		$controller->resolverChamado();
+//	}elseif($acao == 'fecharChamado'){
+//		$controller->fecharChamado();
+//	}elseif($acao == 'atualizarChamado'){
+//		$controller->atualizarChamado();
+//	}elseif($acao == 'tratarChamado'){
+//		$controller->tratarChamado();
+//	}elseif($acao == 'meusChamados'){
+//		$controller->meusChamados();
+//	}elseif($acao == 'gerarEstatistica'){
+//		$controller->gerarEstatistica();
+//	}elseif($acao == 'detalheMeuChamado'){
+//		$controller->detalheMeuChamado();
+//	}elseif($acao =='adicionaSolucionador'){
+//		$controller->adicionaSolucionador();
+//	}
+//	else{
+//		$controller->index();
+//	}
+//}
 
 function executarEfetivoController($acao){
     $controller = new \controllers\EfetivoController();
