@@ -5,9 +5,9 @@
  * Date: 27/01/15
  * Time: 21:55
  * // */
-use models\Chamado;
+//use models\Chamado;
 
-$contaChamado = Chamado::contaChamadosSemSolucionador();
+//$contaChamado = Chamado::contaChamadosSemSolucionador();
 ?>
 <?php if ($_SESSION["grupo"] == 2): ?>
     <div class="container-fluid">
